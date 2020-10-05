@@ -10,10 +10,10 @@
 </head>
 <body>
 
+	<form action="makepdf.php" method="post">
 
-	<div class="container mt-5 col-md-6">
+		<div class="container mt-5 col-md-6">
 		
-		<form action="makepdf.php" method="post">
 
 			<h1>Form Transfer Progdi</h1>
 			<p>Isi form dengan data yang benar</p>	
@@ -22,7 +22,7 @@
 				
 				<div class="col-md-6">
 				<label for="usr">Nama lengkap</label>
-					<input type="text" name="name" placeholder="Ex. Andreas Devanus Prasetya" class="form-control" required>
+					<input type="text" name="nama" placeholder="Ex. Andreas Devanus Prasetya" class="form-control" required>
 				</div>
 
 				<div class="col-md-6">
@@ -69,11 +69,11 @@
 					<form>
 
 					    <label class="radio-inline">
-					     	<input type="radio" name="semester">Ganjil
+					     	<input type="radio" name="semester" id="semester" value="ganjil">Ganjil
 					    </label>&emsp;
 
 					    <label class="radio-inline">
-					     	<input type="radio" name="semester">Genap
+					     	<input type="radio" name="semester" id="semester" value="genap">Genap
 					    </label>
 
 					</form>
@@ -89,38 +89,37 @@
 				<div class="col-md-6">
 					<div class="form-group">
 
-						<label for="pAsal">Fakultas/Prodi Asal</label>
-				      	<select class="form-control" name="pAsal" required>
-					        <option>Sistem Informasi</option>
-					        <option>Game Technology</option>
-					        <option>Teknik Infromatika</option>
-					        <option>Akuntasi</option>
-				      </select>
+						<label for="pasal">Fakultas/Prodi Asal</label>
+				      	<select class="form-control" name="pasal" id="pasal"required>
+					        <option value="SI">Sistem Informasi</option>
+					        <option value="GT">Game Technology</option>
+					        <option value="TI">Teknik Infromatika</option>
+					        <option value="AKSI">Akuntasi</option>
+				      	</select>
 
 					</div>
 				</div>
 
 				<div class="col-md-6">
-				<div class="form-group">
+					<div class="form-group">
 
-					<label for="pTujuan">Fakultas/Prodi Tujuan</label>
-			      	<select class="form-control" name="pTujuan" required>
-				        <option>Sistem Informasi</option>
-				        <option>Game Technology</option>
-				        <option>Teknik Infromatika</option>
-				        <option>Akuntasi</option>
-			      </select>
+						<label for="ptujuan">Fakultas/Prodi Tujuan</label>
+				      	<select class="form-control" name="ptujuan" id="ptujuan"required>
+					        	<option value="SI">Sistem Informasi</option>
+						        <option value="GT">Game Technology</option>
+						        <option value="TI">Teknik Infromatika</option>
+						        <option value="AKSI">Akuntasi</option>
+				      	</select>
 
 				</div>
 				</div>
 			</div>
 
-			<div class="offset-md-6">
-				<button type="submit" class="btn btn-success">Submit</button>
-			</div>
 			
-		</form>
-	</div>
+				<button type="submit" class="btn btn-success">Submit</button>
+	
+		</div>
+	</form>
 
 
 </body>

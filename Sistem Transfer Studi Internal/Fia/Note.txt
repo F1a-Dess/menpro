@@ -1,3 +1,7 @@
 Install composer https://getcomposer.org/download/
 
 mpdf https://github.com/mpdf/mpdf
+
+done!!
+
+dah jadi pdf tapi input radio & dropdown masih error someone fix plz :'(
