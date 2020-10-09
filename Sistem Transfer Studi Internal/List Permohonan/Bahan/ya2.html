@@ -1,0 +1,141 @@
+<html>
+<title>Buku</title>
+
+<head>
+<img src="baner.png" width="1520px" height="291px">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.js"></script> 
+    <style type="text/css"> 
+        .wrapper{ 
+            width: 650px; 
+            margin: 0 auto; 
+        } 
+        .page-header h2{ 
+            margin-top: 0; 
+        } 
+        table tr td:last-child a{ 
+            margin-right: 15px; 
+        } 
+    </style> 
+    <script type="text/javascript"> 
+        $(document).ready(function(){ 
+            $('[data-toggle="tooltip"]').tooltip();    
+        }); 
+    </script>
+</head>
+
+<script> var message="BETREK! >:(";
+///////////////////////////////////
+function clickIE4(){if (event.button==2){alert(message);return false;}} 
+function clickNS4(e){if (document.layers||document.getElementById&&!document.all)
+{if (e.which==2||e.which==3){alert(message);return false;}}} 
+if (document.layers){document.captureEvents(Event.MOUSEDOWN);document.onmousedown=clickNS4;} 
+else if (document.all&&!document.getElementById){document.onmousedown=clickIE4;} 
+document.oncontextmenu=new Function("alert(message);return false")</script>
+
+
+<nav class="navbar navbar-default">
+
+		<div class="container-fluid"><div class="container-fluid">
+		<div class="container-fluid"><div class="container-fluid">
+		<div class="container-fluid"><div class="container-fluid">
+		<div class="container-fluid"><div class="container-fluid">
+		<div class="container-fluid"><div class="container-fluid">
+		<div class="container-fluid"><div class="container-fluid">
+		<div class="container-fluid"><div class="container-fluid">
+		<div class="container-fluid"><div class="container-fluid">
+		<div class="container-fluid"><div class="container-fluid">
+		<div class="container-fluid"><div class="container-fluid">
+		<div class="container-fluid"><div class="container-fluid">
+		<div class="container-fluid">
+		
+		<ul class="nav navbar-nav">
+		<a class="navbar-brand">MilkyWay</a>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="ia.php">Anggota</a></li>
+                <li class="active"><a href="ib.php">Buku</a></li> 
+                <li><a href="ip.php">Penerbit</a></li> 
+                <li><a href="it.php">Transaksi</a></li> 
+                <li><a href="il.php">Lokasi</a></li> 
+                <li><a href="ipg.php">Petugas</a></li> 
+                <li><a href="ibp.php">Buku & Penerbit</a></li>
+                <li><a href="data.php">Data</a></li>
+		</ul>
+	</div>
+</nav>
+
+
+<br>
+    <div class="wrapper"> 
+        <div class="container-fluid"> 
+            <div class="row"> 
+                <div class="col-md-12"> 
+                    <div class="page-header clearfix"> 
+                        <h2 class="pull-left">Buku</h2> 
+                           </div> 
+                    <?php 
+                    // Include config file 
+                    require_once 'config.php'; 
+                     
+                    // Attempt select query execution 
+                    $sql = "SELECT * FROM buku20007"; 
+                    if($result = $mysqli->query($sql)){ 
+                        if($result->num_rows > 0){ 
+                            echo "<table class='table table-bordered table-striped'>"; 
+                                echo "<thead>"; 
+                                    echo "<tr>"; 
+                                        echo "<th>ID Buku</th>"; 
+                                        echo "<th>ID Lokasi</th>";                                         
+                                        echo "<th>Judul</th>"; 
+                                        echo "<th>Kode Penerbit</th>";                                         
+                                        echo "<th>Kuantitas</th>";  
+                                        echo "<th>Aksi</th>"; 
+                                    echo "</tr>"; 
+                                echo "</thead>"; 
+                                echo "<tbody>"; 
+                                while($row = $result->fetch_array()){ 
+                                    echo "<tr>"; 
+                                        echo "<td>" . $row['id_buku20007'] . "</td>"; 
+                                        echo "<td>" . $row['id_lokasi20007'] . "</td>";
+                                        echo "<td>" . $row['judul20007'] . "</td>";
+                                        echo "<td>" . $row['kd_penerbit20007'] . "</td>";
+                                        echo "<td>" . $row['kuantitas20007'] . "</td>"; 
+                                        echo "<td>"; 
+                                            echo "<a href='rb.php?id=". $row['id_buku20007'] ."' title='View Record' datatoggle='tooltip'><span class='glyphicon glyphicon-eye-open'></span></a>"; 
+                                            echo "<a href='ub.php?id=". $row['id_buku20007'] ."' title='Update Record' datatoggle='tooltip'><span class='glyphicon glyphicon-pencil'></span></a>"; 
+                                            echo "<a href='db.php?id=". $row['id_buku20007'] ."' title='Delete Record' datatoggle='tooltip'><span class='glyphicon glyphicon-trash'></span></a>"; 
+                                        echo "</td>"; 
+                                    echo "</tr>"; 
+                                } 
+                                echo "</tbody>";                             
+                            echo "</table>"; 
+                            // Free result set 
+                            $result->free(); 
+                        } else{ 
+                            echo "<p class='lead'><em>No records were found.</em></p>"; 
+                        } 
+                    } else{ 
+                        echo "ERROR: Could not able to execute $sql. " . $mysqli->error; 
+                    } 
+                     
+                    // Close connection 
+                    $mysqli->close(); 
+                    ?> 
+                </div> 
+     <a href="cb.php" class="btn btn-success pull-right">Menambahkan Data</a> 
+ 
+            </div>         
+        </div> 
+    </div> 
+
+<div class="footer" align="center">
+	<font color="black" face="OCR A Std" size="2">
+		Milik &copy;Betrek
+	</font>
+</div>
+
+<br>
+
+</body> 
+</html> 
