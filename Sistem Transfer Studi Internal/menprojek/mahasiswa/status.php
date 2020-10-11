@@ -180,13 +180,7 @@ session_start();
 			<div class="container-fluid">       
 				<div class="row">
 					<div class="column left" style="background-color:#aaa;">
-						<div id="mySidenav" class="sidenav">
-							<a href="mahasiswa.php" id="home" class="fa fa-fw fa-home"></a>
-							<a href="#" id="form" class="fa fa-fw fa-file"></a>
-							<a href="status.php" id="status" class="fa fa-fw fa-map-pin"></a>
-							<a href="#" id="notification" class="fa fa-fw fa-envelope"></a>
-							<a href="../login/logout.php" id="logout" class="fa fa-fw fa-sign-out"></a>
-						</div>
+						
 					</div>
 
 					<div class="column right" style="background-color:#bbb;">
