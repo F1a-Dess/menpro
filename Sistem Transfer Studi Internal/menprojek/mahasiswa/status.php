@@ -179,6 +179,7 @@ session_start();
       <p></p>
     </div>
 
+<<<<<<< HEAD
     </div>
     <button type="button" class="btn btn-info"><a href="mahasiswa.php">Kalendar Akademik</a></button>
   </div>
@@ -187,4 +188,39 @@ session_start();
 </div>
 </div>
 </body>
+=======
+		<div id="page-content-wrapper" class="page-content-toggle">
+			<div class="container-fluid">       
+				<div class="row">
+					<div class="column left" style="background-color:#aaa;">
+						<div id="mySidenav" class="sidenav">
+							<a href="mahasiswa.php" id="home" class="fa fa-fw fa-home"></a>
+							<a href="#" id="form" class="fa fa-fw fa-file"></a>
+							<a href="status.php" id="status" class="fa fa-fw fa-map-pin"></a>
+							<a href="#" id="notification" class="fa fa-fw fa-envelope"></a>
+							<a href="../login/logout.php" id="logout" class="fa fa-fw fa-sign-out"></a>
+						</div>
+					</div>
+
+					<div class="column right" style="background-color:#bbb;">
+						<div class="center" align="center">
+							<div class="card">
+								<h1>Status</h1>
+								<img src="../pictures/profil.png" alt="John" style="width:100%">
+								<h1><?php echo "$nama"; ?></h1>
+								<p class="title">NIM awal: <?php echo "$nim"; ?></p>
+								<p>Status: <font size="3"><strong><?php echo "$status"; ?></strong></font></p>
+								<p>&emsp;</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer" align="center" style="background-color:#bbb">
+			<p color="black" face="OCR A Std" size="2">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong> &copy; Kelompok 4</strong></p>
+		</div>
+	</body>
+>>>>>>> parent of 7f91f35... Status duplicate bug kelar
 </html>
