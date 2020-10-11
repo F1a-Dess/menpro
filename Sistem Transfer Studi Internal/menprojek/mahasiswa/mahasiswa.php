@@ -10,6 +10,23 @@ session_start();
     {
         header("location:../login/accdenied.php");
     }  
+
+    $link = mysqli_connect("localhost","root","","transfer_mhs_intern");
+    $email = $_SESSION['email'];
+        $sql = "SELECT * FROM user WHERE email = '".$email."'";
+        $result = $link->query($sql);
+                $row = $result->fetch_array();
+                $status = $row['status'];
+
+        $sql2 = "SELECT * FROM user WHERE email = '".$email."'";
+        $result2 = $link->query($sql2);
+                $row = $result2->fetch_array();
+                $nama = $row['nama'];
+
+        $sql3 = "SELECT * FROM user WHERE email = '".$email."'";
+        $result3 = $link->query($sql3);
+                $row = $result3->fetch_array();
+                $id = $row['id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,26 +42,12 @@ session_start();
 
     <style type="text/css">
       .center {
+        display: block;
+        margin-top: 100pt;
         margin-left: 170pt;
         margin-right: auto;
         width: 70%;
       }
-	  
-	  .column
-	  {
-		float: left;
-		padding: 10px;
-		height: 900px;
-	  }
-	  .left
-	  {
-		width: 15%;
-	  }
-
-	  .right
-	  {
-		width: 85%;
-	  }
 
       #mySidenav a {
         position: absolute; /* Position them relative to the browser window */
@@ -69,74 +72,46 @@ session_start();
       }
 
       #form {
-        top: 85px;
+        top: 80px;
         background-color: #c377e0; 
       }
 
       #status {
-        top: 145px;
+        top: 140px;
         background-color: #a86cc1;
       }
 
       #notification {
-        top: 205px;
+        top: 200px;
         background-color: #89609e;
       }
 
       #logout {
-        top: 265px;
+        top: 260px;
         background-color: #484553;
       }
     </style>
   </head>
   
-  <body>
-    
-    <!-- header -->
-    <!-- <nav id="header" class="navbar navbar-fixed-top navbar navbar-light">
-      <div class="container-fluid">
-        <div class="navbar-header" id="sidebar-toggle-button">
-            <i class="fa fa-bars" aria-hidden="true"></i>
-        </div>
-        <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="#">Data Diri</a></li>
-          <li><a href="status.php">Status</a></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="../login/logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-          <li>&nbsp &nbsp &nbsp</li>
-        </ul>
+  <body>    
+    <div id="mySidenav" class="sidenav">
+      <a href="mahasiswa.php" id="home" class="fa fa-fw fa-home"></a>
+      <a href="form.php" id="form" class="fa fa-fw fa-file"></a>
+      <a href="status.php" id="status" class="fa fa-fw fa-map-pin"></a>
+      <a href="#" id="notification" class="fa fa-fw fa-envelope"></a>
+      <a href="../login/logout.php" id="logout" class="fa fa-fw fa-sign-out"></a>
+    </div>
+
+  <div id="page-content-wrapper" class="page-content-toggle">
+    <div class="container-fluid">
+      <div id="content" class="col-md-offset-1">
+    <div class="row">
+      <div class="col-sm-6">
+        <embed type="application/pdf" src="../files/PROSEDUR TRANSFER INTERNAL.pdf" width="1200" height="630"></embed>
       </div>
-    </nav>   -->
-    <!-- /header -->      
-
-
-
-<!-- page-content-wrapper -->
-		<div id="page-content-wrapper" class="page-content-toggle">
-			<div class="container-fluid">       
-					<div class="row">
-						<div class="column left" style="background-color:#aaa;">
-							<div id="mySidenav" class="sidenav">
-							  <a href="mahasiswa.php" id="home" class="fa fa-fw fa-home"></a>
-							  <a href="#" id="form" class="fa fa-fw fa-file"></a>
-							  <a href="status.php" id="status" class="fa fa-fw fa-map-pin"></a>
-							  <a href="#" id="notification" class="fa fa-fw fa-envelope"></a>
-							  <a href="../login/logout.php" id="logout" class="fa fa-fw fa-sign-out"></a>
-							</div>
-						</div>
-
-						<div class="column right" style="background-color:#bbb;">
-							<div class="center" align="center">
-								<img src="../pictures/unika.png" width="700" height="300">
-							</div>
-						</div>
-					</div>
-			</div>
-		</div>
-		<div class="footer" align="center" style="background-color:#bbb">
-		  <p color="black" face="OCR A Std" size="2">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong> &copy; Kelompok 4</strong></p>
-		</div>
-	</body>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
 </html>

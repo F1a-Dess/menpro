@@ -26,7 +26,7 @@ session_start();
         $sql3 = "SELECT * FROM user WHERE email = '".$email."'";
         $result3 = $link->query($sql3);
                 $row = $result3->fetch_array();
-                $id = $row['id'];
+                $nim = $row['nim_asal'];
         
 ?>
 <!DOCTYPE html>
@@ -129,14 +129,33 @@ session_start();
     </style>
   </head>
   
-  <body>  
+  <body>
+    
+    <!-- header -->
+    <!-- <nav id="header" class="navbar navbar-fixed-top navbar navbar-light">
+      <div class="container-fluid">
+        <div class="navbar-header" id="sidebar-toggle-button">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Data Diri</a></li>
+          <li><a href="status.php">Status</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="../login/logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+          <li>&nbsp &nbsp &nbsp</li>
+        </ul>
+      </div>
+    </nav>   -->
+    <!-- /header -->      
 
     <div id="mySidenav" class="sidenav">
-      <a href="mahasiswa.php" id="home" class="fa fa-fw fa-home"></a>
-      <a href="form.php" id="form" class="fa fa-fw fa-file"></a>
-      <a href="status.php" id="status" class="fa fa-fw fa-map-pin"></a>
-      <a href="#" id="notification" class="fa fa-fw fa-envelope"></a>
-      <a href="../login/logout.php" id="logout" class="fa fa-fw fa-sign-out"></a>
+          <a href="mahasiswa.php" id="home" class="fa fa-fw fa-home"></a>
+          <a href="#" id="form" class="fa fa-fw fa-file"></a>
+          <a href="status.php" id="status" class="fa fa-fw fa-map-pin"></a>
+          <a href="#" id="notification" class="fa fa-fw fa-envelope"></a>
+          <a href="../login/logout.php" id="logout" class="fa fa-fw fa-sign-out"></a>
     </div>
 
 <!-- page-content-wrapper -->
@@ -145,46 +164,18 @@ session_start();
 
             <div class="row">
                 <div id="content" class="col-md-8 col-md-offset-1 col-xs-12">
-  
-<div class="container mt-12">
-  <strong><h1><b>Selamat Datang, <?php echo "$nama"; ?></b></h1></strong>
-  <hr>
-  <br>
-  <div class="row">
-    <div class="col-sm-4">
-      <h1>Proses</h1>
-      <br>
-      <strong>
-      <p>Isi formulir permohonan</p>
-      <p>Cek berkas dan formulir</p>
-      <p>Keputusan Kaprodi Baru</p>
-      <p>Keputusan BAA</p>
-      <p>Biaya studi</p>
-      <p>Pembayaran</p>
-      <p>Pengiriman NIM Baru</p>
-      <p>Selesai</p>
-      </strong>
-    </div>
 
-    <div class="col-sm-4">
-      <h1>Status</h1>
-      <br>
-      <p><strong><?php echo "Checked"; ?></strong></p>
-      <p></p>
-      <p></p>
-      <p></p>
-      <p></p>
-      <p></p>
-      <p></p>
-      <p></p>
-    </div>
+<h1 class="center">Status</h1>
 
-    </div>
-    <button type="button" class="btn btn-info"><a href="mahasiswa.php">Kalendar Akademik</a></button>
-  </div>
+<div class="card">
+  <img src="../pictures/profil.png" alt="John" style="width:100%">
+  <h1><?php echo "$nama"; ?></h1>
+  <p class="title">NIM awal: <?php echo "$nim"; ?></p>
+  <p>Status: <font size="3"><strong><?php echo "$status"; ?></strong></font></p>
+  <p>&emsp;</p>
 </div>
+
+<br><br><br><br>
+<div class="footer" align="center">
+  <p color="black" face="OCR A Std" size="2">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong> &copy; Kelompok 4</strong></p>
 </div>
-</div>
-</div>
-</body>
-</html>
