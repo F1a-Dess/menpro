@@ -27,6 +27,11 @@ session_start();
         $result3 = $link->query($sql3);
                 $row = $result3->fetch_array();
                 $id = $row['id'];
+
+        @$prodi_asal = $_POST['prodi_asal'];
+        @$fak_asal = $_POST['fak_asal'];
+        @$prodi_tujuan = $_POST['prodi_tujuan'];
+        @$fak_tujuan = $_POST['fak_tujuan'];
         
 ?>
 <!DOCTYPE html>
@@ -140,7 +145,7 @@ session_start();
   
 	<body>
 		<!-- page-content-wrapper -->
-					<div class="column left" style="background-color:white;">
+					<!-- <div class="column left" style="background-color:white;"> -->
 						<div id="mySidenav" class="sidenav">
 							<a href="mahasiswa.php" id="home" class="fa fa-fw fa-home"></a>
 							<a href="form.php" id="form" class="fa fa-fw fa-file"></a>
@@ -150,8 +155,8 @@ session_start();
 						</div>
 					</div>
 
-					<!-- <div class="column right" style="background-color:#bbb;">
-						<div class="center" align="center"> -->
+		<!-- <div class="column right" style="background-color:#bbb;">
+		<div class="center" align="center"> -->
 		<div id="page-content-wrapper" class="page-content-toggle">
         <div class="container-fluid">
   
@@ -202,7 +207,7 @@ session_start();
 
                                 <div class="col-md-6">
                                   <label for="usr">Tahun Akademik</label>
-                                  <input type="text" name="takademik" placeholder="Tahun Akademik" class="form-control" required>
+                                  <input type="text" name="takademik" placeholder="Ex. 2020/2021" class="form-control" required>
                                 </div>
 
 
@@ -226,39 +231,166 @@ session_start();
                               </div>
 
                               
-                              <div class="row col-md-12">
+                        <div class="row col-md-12">
 
-                                <div class="col-md-6">
-                                  <div class="form-group">
+                            <div class="col-md-6">
+                            <div class="form-group">
 
-                                    <label for="pasal">Fakultas/Prodi Asal</label>
-                                        <select class="form-control" name="pasal" id="pasal"required>
-                                          <option value="SI">Sistem Informasi</option>
-                                          <option value="GT">Game Technology</option>
-                                          <option value="TI">Teknik Infromatika</option>
-                                          <option value="AKSI">Akuntasi</option>
-                                        </select>
+                            <label for="prodi_asal">Prodi Asal</label>
+                            <select name="prodi_asal" class="form-control" value="<?php echo $prodi_asal; ?>"> 
 
-                                  </div>
-                                </div>
+                            <option value=""> Please Select</option>
+                                <?php
+                                $sql = "select * from prodi"; 
+                                if($result = $link->query($sql)){
+                                    if($result->num_rows > 0){
+                                while($row = $result->fetch_array()){ 
+                                    echo "<option value=\"".$row['prodi']."\" ";
+                                if ($prodi_asal == $row['prodi']) {
+                                    echo "selected";
+                                        }
+                                    echo "<option>".$row['prodi']."</option>";
+                                    }
+                                } 
+                                else{
+                                    echo "<p class='lead'><em>No records were found.</em></p>";
+                                    }
+                                } 
+                                else{
+                                    echo "ERROR: Could not able to execute $sql. " . $link->error;
+                                    }  
+                 
+                                //$link->close();
+                                ?>
+                            </select> 
+                            </div>
+                            </div>
 
-                                <div class="col-md-6">
-                                  <div class="form-group">
 
-                                    <label for="ptujuan">Fakultas/Prodi Tujuan</label>
-                                        <select class="form-control" name="ptujuan" id="ptujuan"required>
-                                            <option value="SI">Sistem Informasi</option>
-                                            <option value="GT">Game Technology</option>
-                                            <option value="TI">Teknik Infromatika</option>
-                                            <option value="AKSI">Akuntasi</option>
-                                        </select>
+                            <div class="col-md-6">
+                            <div class="form-group">
+                            <label for="fak_asal">Fakultas Asal</label>
+                            <select name="fak_asal" class="form-control" value="<?php echo $fak_asal; ?>"> 
 
-                                </div>
-                                </div>
-                              </div>
+                            <option value=""> Please Select</option>
+                                <?php
+                                $sql = "select * from fakultas"; 
+                                if($result = $link->query($sql)){
+                                    if($result->num_rows > 0){
+                                while($row = $result->fetch_array()){ 
+                                    echo "<option value=\"".$row['fakultas']."\" ";
+                                if ($fak_asal == $row['fakultas']) {
+                                    echo "selected";
+                                        }
+                                    echo "<option>".$row['fakultas']."</option>";
+                                    }
+                                } 
+                                else{
+                                    echo "<p class='lead'><em>No records were found.</em></p>";
+                                    }
+                                } 
+                                else{
+                                    echo "ERROR: Could not able to execute $sql. " . $link->error;
+                                    }  
+                 
+                                //$link->close();
+                                ?>
+                            </select> 
+                            </div>
+                            </div>
+                        </div>
 
-                              
-                                <button type="submit" class="btn btn-success">Submit</button>
+
+                        <div class="row col-md-12">
+
+                            <div class="col-md-6">
+                            <div class="form-group">
+
+                            <label for="prodi_tujuan">Prodi Tujuan</label>
+                            <select name="prodi_tujuan" class="form-control" value="<?php echo $prodi_tujuan; ?>"> 
+
+                            <option value=""> Please Select</option>
+                                <?php
+                                $sql = "select * from prodi"; 
+                                if($result = $link->query($sql)){
+                                    if($result->num_rows > 0){
+                                while($row = $result->fetch_array()){ 
+                                    echo "<option value=\"".$row['prodi']."\" ";
+                                if ($prodi_tujuan == $row['prodi']) {
+                                    echo "selected";
+                                        }
+                                    echo "<option>".$row['prodi']."</option>";
+                                    }
+                                } 
+                                else{
+                                    echo "<p class='lead'><em>No records were found.</em></p>";
+                                    }
+                                } 
+                                else{
+                                    echo "ERROR: Could not able to execute $sql. " . $link->error;
+                                    }  
+                 
+                                //$link->close();
+                                ?>
+
+                            </select> 
+                            </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                            <div class="form-group">
+                            <label for="fak_tujuan">Fakultas Tujuan</label>
+                            <select name="fak_tujuan" class="form-control" value="<?php echo $fak_tujuan; ?>"> 
+
+                            <option value=""> Please Select</option>
+                                <?php
+                                $sql = "select * from fakultas"; 
+                                if($result = $link->query($sql)){
+                                    if($result->num_rows > 0){
+                                while($row = $result->fetch_array()){ 
+                                    echo "<option value=\"".$row['fakultas']."\" ";
+                                if ($fak_tujuan == $row['fakultas']) {
+                                    echo "selected";
+                                        }
+                                    echo "<option>".$row['fakultas']."</option>";
+                                    }
+                                } 
+                                else{
+                                    echo "<p class='lead'><em>No records were found.</em></p>";
+                                    }
+                                } 
+                                else{
+                                    echo "ERROR: Could not able to execute $sql. " . $link->error;
+                                    }  
+                 
+                                //$link->close();
+                                ?>
+                            </select> 
+
+                            </div>
+                            </div>
+                        </div>
+
+                        <div class="row col-md-12">
+
+                            <div class="col-md-6">
+                            <div class="form-group">
+
+                            <label for="transkrip">Transkrip Nilai</label><br>
+                            <input type="file" name="upload" accept="application/pdf">
+                            </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                            <div class="form-group">
+                            <label for="rekomendasi">Surat Rekomendasi Kaprodi</label><br>
+                            <input type="file" name="upload" accept="application/pdf">
+                            </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success">Submit</button>
                           
                             </div>
                           </form>
