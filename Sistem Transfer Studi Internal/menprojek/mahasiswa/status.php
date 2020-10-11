@@ -50,6 +50,22 @@ session_start();
         width: 70%;
       }
 
+	  .column
+	  {
+		float: left;
+		padding: 10px;
+		height: 900px;
+	  }
+	  .left
+	  {
+		width: 15%;
+	  }
+
+	  .right
+	  {
+		width: 85%;
+	  }
+
       #mySidenav a {
         position: absolute; /* Position them relative to the browser window */
         left: -80px; /* Position them outside of the screen */
@@ -159,23 +175,38 @@ session_start();
     </div>
 
 <!-- page-content-wrapper -->
-    <div id="page-content-wrapper" class="page-content-toggle">
-        <div class="container-fluid">            
 
-            <div class="row">
-                <div id="content" class="col-md-8 col-md-offset-1 col-xs-12">
+		<div id="page-content-wrapper" class="page-content-toggle">
+			<div class="container-fluid">       
+				<div class="row">
+					<div class="column left" style="background-color:#aaa;">
+						<div id="mySidenav" class="sidenav">
+							<a href="mahasiswa.php" id="home" class="fa fa-fw fa-home"></a>
+							<a href="#" id="form" class="fa fa-fw fa-file"></a>
+							<a href="status.php" id="status" class="fa fa-fw fa-map-pin"></a>
+							<a href="#" id="notification" class="fa fa-fw fa-envelope"></a>
+							<a href="../login/logout.php" id="logout" class="fa fa-fw fa-sign-out"></a>
+						</div>
+					</div>
 
-<h1 class="center">Status</h1>
+					<div class="column right" style="background-color:#bbb;">
+						<div class="center" align="center">
+							<div class="card">
+								<h1>Status</h1>
+								<img src="../pictures/profil.png" alt="John" style="width:100%">
+								<h1><?php echo "$nama"; ?></h1>
+								<p class="title">NIM awal: <?php echo "$nim"; ?></p>
+								<p>Status: <font size="3"><strong><?php echo "$status"; ?></strong></font></p>
+								<p>&emsp;</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
-<div class="card">
-  <img src="../pictures/profil.png" alt="John" style="width:100%">
-  <h1><?php echo "$nama"; ?></h1>
-  <p class="title">NIM awal: <?php echo "$nim"; ?></p>
-  <p>Status: <font size="3"><strong><?php echo "$status"; ?></strong></font></p>
-  <p>&emsp;</p>
-</div>
-
-<br><br><br><br>
-<div class="footer" align="center">
-  <p color="black" face="OCR A Std" size="2">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong> &copy; Kelompok 4</strong></p>
-</div>
+		<div class="footer" align="center" style="background-color:#bbb">
+			<p color="black" face="OCR A Std" size="2">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong> &copy; Kelompok 4</strong></p>
+		</div>
+	</body>
+</html>

@@ -25,12 +25,26 @@ session_start();
 
     <style type="text/css">
       .center {
-        display: block;
-        margin-top: 100pt;
         margin-left: 170pt;
         margin-right: auto;
         width: 70%;
       }
+	  
+	  .column
+	  {
+		float: left;
+		padding: 10px;
+		height: 900px;
+	  }
+	  .left
+	  {
+		width: 15%;
+	  }
+
+	  .right
+	  {
+		width: 85%;
+	  }
 
       #mySidenav a {
         position: absolute; /* Position them relative to the browser window */
@@ -55,22 +69,22 @@ session_start();
       }
 
       #form {
-        top: 80px;
+        top: 85px;
         background-color: #c377e0; 
       }
 
       #status {
-        top: 140px;
+        top: 145px;
         background-color: #a86cc1;
       }
 
       #notification {
-        top: 200px;
+        top: 205px;
         background-color: #89609e;
       }
 
       #logout {
-        top: 260px;
+        top: 265px;
         background-color: #484553;
       }
     </style>
@@ -97,24 +111,32 @@ session_start();
     </nav>   -->
     <!-- /header -->      
 
-    <div id="mySidenav" class="sidenav">
-      <a href="mahasiswa.php" id="home" class="fa fa-fw fa-home"></a>
-      <a href="#" id="form" class="fa fa-fw fa-file"></a>
-      <a href="status.php" id="status" class="fa fa-fw fa-map-pin"></a>
-      <a href="#" id="notification" class="fa fa-fw fa-envelope"></a>
-      <a href="../login/logout.php" id="logout" class="fa fa-fw fa-sign-out"></a>
-    </div>
+
 
 <!-- page-content-wrapper -->
-    <div id="page-content-wrapper" class="page-content-toggle">
-        <div class="container-fluid">            
+		<div id="page-content-wrapper" class="page-content-toggle">
+			<div class="container-fluid">       
+					<div class="row">
+						<div class="column left" style="background-color:#aaa;">
+							<div id="mySidenav" class="sidenav">
+							  <a href="mahasiswa.php" id="home" class="fa fa-fw fa-home"></a>
+							  <a href="#" id="form" class="fa fa-fw fa-file"></a>
+							  <a href="status.php" id="status" class="fa fa-fw fa-map-pin"></a>
+							  <a href="#" id="notification" class="fa fa-fw fa-envelope"></a>
+							  <a href="../login/logout.php" id="logout" class="fa fa-fw fa-sign-out"></a>
+							</div>
+						</div>
 
-            <div class="row">
-                <div id="content" class="col-md-8 col-md-offset-1 col-xs-12">
-
-<img src="../pictures/unika.png" width="700" height="300" class="center">
-
-<br><br><br><br><br><br><br><br>
-<div class="footer" align="center">
-  <p color="black" face="OCR A Std" size="2">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong> &copy; Kelompok 4</strong></p>
-</div>
+						<div class="column right" style="background-color:#bbb;">
+							<div class="center" align="center">
+								<img src="../pictures/unika.png" width="700" height="300">
+							</div>
+						</div>
+					</div>
+			</div>
+		</div>
+		<div class="footer" align="center" style="background-color:#bbb">
+		  <p color="black" face="OCR A Std" size="2">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<strong> &copy; Kelompok 4</strong></p>
+		</div>
+	</body>
+</html>
