@@ -104,7 +104,7 @@
     <img src="pictures/unika.png" width="300" height="150" class="center">
   </div>
   
-<form method="post" action="\menpro\Sistem Transfer Studi Internal/menprojek/login/magicwords.php" id="loginform" onsubmit="return validasi()"> 
+<form method="post" action="\menpro/rep\Sistem Transfer Studi Internal/menprojek/login/magicwords.php" id="loginform" onsubmit="return validasi()"> 
 
   <b>Email:</b> 
   <input type="text" name="email" id="email" class="form_login" placeholder="Email"/><br>

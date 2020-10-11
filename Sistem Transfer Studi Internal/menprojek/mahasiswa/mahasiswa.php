@@ -54,17 +54,18 @@ session_start();
 			{
 				float: left;
 				padding: 10px;
-				height: 900px;
+				height: 680px;
+				width: auto;
 			}
 
 			.left
 			{
-				width: 15%;
+				width: 10%;
 			}
 
 			.right
 			{
-				width: 85%;
+				width: 90%;
 			}
 
 			#mySidenav a 
@@ -122,7 +123,7 @@ session_start();
 		<div id="page-content-wrapper" class="page-content-toggle">
 			<div class="container-fluid">       
 				<div class="row">
-					<div class="column left" style="background-color:#aaa;">
+					<div class="column left" style="background-color:white;">
 						<div id="mySidenav" class="sidenav">
 							<a href="mahasiswa.php" id="home" class="fa fa-fw fa-home"></a>
 							<a href="form.php" id="form" class="fa fa-fw fa-file"></a>
@@ -132,15 +133,15 @@ session_start();
 						</div>
 					</div>
 
-					<div class="column right" style="background-color:#bbb;">
-						<div class="center" align="center">
+					<!-- <div class="column right" style="background-color:#bbb;">
+						<div class="center" align="center"> -->
 							<div class="row">
 								<div class="col-sm-6">
-									<embed type="application/pdf" src="../files/PROSEDUR TRANSFER INTERNAL.pdf" width="1200" height="630"></embed>
+									<embed type="application/pdf" src="../files/PROSEDUR TRANSFER INTERNAL.pdf" width="1200" height="675"></embed>
 								</div>
 							</div>
-						</div>
-					</div>
+						<!-- </div>
+					</div> -->
 				</div>
 			</div>
 		</div>
