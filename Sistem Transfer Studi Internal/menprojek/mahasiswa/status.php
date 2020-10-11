@@ -51,6 +51,23 @@ session_start();
 				width: 70%;
 			}
 
+			.column
+			{
+				float: left;
+				padding: 10px;
+				height: 900px;
+			}
+
+			.left
+			{
+				width: 15%;
+			}
+
+			.right
+			{
+				width: 85%;
+			}
+
 			#mySidenav a 
 			{
 				position: absolute; /* Position them relative to the browser window */
@@ -148,7 +165,7 @@ session_start();
 					<div class="column left" style="background-color:#aaa;">
 						<div id="mySidenav" class="sidenav">
 							<a href="mahasiswa.php" id="home" class="fa fa-fw fa-home"></a>
-							<a href="#" id="form" class="fa fa-fw fa-file"></a>
+							<a href="form.php" id="form" class="fa fa-fw fa-file"></a>
 							<a href="status.php" id="status" class="fa fa-fw fa-map-pin"></a>
 							<a href="#" id="notification" class="fa fa-fw fa-envelope"></a>
 							<a href="../login/logout.php" id="logout" class="fa fa-fw fa-sign-out"></a>
@@ -162,7 +179,7 @@ session_start();
 								<hr>
 								<br>
 								<div class="row">
-									<div class="col-sm-4">
+									<div class="col-sm-5" align="center">
 										<h1>Proses</h1>
 										<br>
 										<strong>
@@ -177,7 +194,7 @@ session_start();
 										</strong>
 									</div>
 
-									<div class="col-sm-4">
+									<div class="col-sm-7">
 										<h1>Status</h1>
 										<br>
 										<p><strong><?php echo "Checked"; ?></strong></p>
