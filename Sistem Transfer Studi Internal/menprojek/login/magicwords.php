@@ -26,16 +26,16 @@ if($row=mysqli_fetch_array($sql)) {
 		$_SESSION['level'] = "mahasiswa";
 		// alihkan ke halaman dashboard admin
 		header("location:../mahasiswa/mahasiswa.php");
-		// cek jika user login sebagai akunting
-	}else if($row['level']=="akunting"){
-		// buat session login dan username
-		$_SESSION['username'] = $username;
-		$_SESSION['level'] = "akunting";
-		// alihkan ke halaman dashboard akunting
-		header("location:../akunting/akunting.php");
+		// cek jika user login sebagai baa
+	}else if($row['level']=="baa"){
+		// buat session login dan email
+		$_SESSION['email'] = $email;
+		$_SESSION['level'] = "baa";
+		// alihkan ke halaman dashboard baa
+		header("location:../baa/baa.php");
 	}else if($row['level']=="kasir"){
-		// buat session login dan username
-		$_SESSION['username'] = $username;
+		// buat session login dan email
+		$_SESSION['email'] = $email;
 		$_SESSION['level'] = "kasir";
 		// alihkan ke halaman dashboard kasir
 		header("location:../kasir/kasir.php");

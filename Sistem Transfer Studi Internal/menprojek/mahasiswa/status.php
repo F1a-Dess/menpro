@@ -13,10 +13,6 @@ if($_SESSION['level']!="mahasiswa")
 
 $link = mysqli_connect("localhost","root","","transfer_mhs_intern");
 $email = $_SESSION['email'];
-$sql = "SELECT * FROM user WHERE email = '".$email."'";
-$result = $link->query($sql);
-$row = $result->fetch_array();
-$status = $row['status'];
 
 $sql2 = "SELECT * FROM user WHERE email = '".$email."'";
 $result2 = $link->query($sql2);
@@ -27,6 +23,17 @@ $sql3 = "SELECT * FROM user WHERE email = '".$email."'";
 $result3 = $link->query($sql3);
 $row = $result3->fetch_array();
 $id = $row['id'];
+
+//halaman status
+$sql = "SELECT * FROM user WHERE email = '".$email."'";
+$result = $link->query($sql);
+$row = $result->fetch_array();
+@$isi_form = $row['isi_form'];
+
+$sql4 = "SELECT * FROM progress WHERE user_id = '".$id."'";
+$result4 = $link->query($sql4);
+$row = $result4->fetch_array();
+$cek_form = $row['cek_form'];
 
 ?>
 <!DOCTYPE html>
