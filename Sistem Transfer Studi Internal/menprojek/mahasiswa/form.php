@@ -28,11 +28,35 @@ session_start();
                 $row = $result3->fetch_array();
                 $id = $row['id'];
 
-        @$prodi_asal = $_POST['prodi_asal'];
-        @$fak_asal = $_POST['fak_asal'];
-        @$prodi_tujuan = $_POST['prodi_tujuan'];
-        @$fak_tujuan = $_POST['fak_tujuan'];
-        
+// @$nama = $_POST['nama'];
+// @$nim = $_POST['nim'];
+// @$alamat = $_POST['alamat'];
+// @$kota = $_POST['kota'];
+// @$nohp = $_POST['nohp'];
+// @$takademik = $_POST['takademik'];
+// @$smt_pindah = $_POST['semester'];
+// @$transkrip = $_POST['transkrip'];
+// @$rekomendasi = $_POST['rekomendasi'];
+@$prodi_asal = $_POST['prodi_asal'];
+@$fak_asal = $_POST['fak_asal'];
+@$prodi_tujuan = $_POST['prodi_tujuan'];
+@$fak_tujuan = $_POST['fak_tujuan'];
+
+
+// $sql4 = "SELECT * FROM data_mhs WHERE id = '".$id."'";
+//         $result4 = $connect->query($sql4);
+// $row = $result->fetch_array();
+// $isi_form = $row['isi_form'];
+
+
+//     $sql = "INSERT INTO data_mhs (nama, nim_asal, prodi_asal, fakultas_asal, alamat, kota, nohp, smt_pindah, thn_akademik_pindah, prodi_tujuan, fakultas_tujuan, transkrip, rekomendasi_dosen, user_id) VALUES ('$nama', '$nim', '$prodi_asal', '$fak_asal', '$alamat', '$kota', '$nohp', '$smt_pindah', '$takademik', '$prodi_tujuan', 'fak_tujuan', '$id')";
+//     // $sql .= "UPDATE data_mhs SET isi_form = 1 WHERE id = '$id'";
+
+//     $run = mysqli_query($connect, $sql);
+//     if ($run) {
+//         header("location: mahasiswa.php");
+//     }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -160,7 +184,7 @@ session_start();
 		<div id="page-content-wrapper" class="page-content-toggle">
         <div class="container-fluid">
   
-                <form action="makepdf.php" method="post" class="center">
+                <form action="proses_simpan.php" method="post" class="center">
                     
                         <div class="container col-md-12">
                             
@@ -168,54 +192,46 @@ session_start();
                               <h1>Form Transfer Progdi</h1>
                               <p>Isi form dengan data yang benar</p>  
 
-                              <div class="row col-md-12">
-                                
+                            <div class="row col-md-12">                              
                                 <div class="col-md-6">
-                                <label for="usr">Nama lengkap</label>
+                                <label>Nama lengkap</label>
                                   <input type="text" name="nama" placeholder="Ex. Andreas Devanus Prasetya" class="form-control" required>
                                 </div>
 
                                 <div class="col-md-6">
-                                <label for="usr">NIM</label>
+                                <label>NIM</label>
                                   <input type="text" name="nim" placeholder="Ex. 21.N1.0001" class="form-control" required>
                                 </div>
-
                               </div>
+
 
                               <div class="col-md-11">
-
-                                <label for="usr">Alamat (KTP)</label>
+                                <label>Alamat (KTP)</label>
                                 <input type="text" name="alamat" placeholder="Ex. JL. Graha Merdeka II No. 4" class="form-control" required>
-                                
                               </div>
 
-                              <div class="row col-md-12">
-                                
+
+                              <div class="row col-md-12">                                
                                 <div class="col-md-6">
-                                  <label for="usr">Kota</label>
+                                  <label>Kota</label>
                                   <input type="text" name="kota" placeholder="Ex. Jakarta" class="form-control" required>
                                 </div>
-
                                 <div class="col-md-6">
-                                  <label for="usr">No Handphone</label>
+                                  <label>No Handphone</label>
                                   <input type="text" name="nohp" placeholder="Ex. 08941xxxxxxx" class="form-control" required>
                                 </div>
-
                               </div>
 
                               <div class="row col-md-12">
-
                                 <div class="col-md-6">
-                                  <label for="usr">Tahun Akademik</label>
+                                  <label>Tahun Akademik</label>
                                   <input type="text" name="takademik" placeholder="Ex. 2020/2021" class="form-control" required>
                                 </div>
 
 
                                 <div class="col-md-6">
-
-                                  <label for="usr">Semester</label>
+                                  <label>Semester</label>
                                   </br>
-
                                       <label class="radio-inline">
                                         <input type="radio" name="semester" id="semester" value="ganjil">Ganjil
                                       </label>&emsp;
@@ -223,16 +239,12 @@ session_start();
                                       <label class="radio-inline">
                                         <input type="radio" name="semester" id="semester" value="genap">Genap
                                       </label>
-
                                   </br>
-
                                 </div>
-
                               </div>
 
                               
                         <div class="row col-md-12">
-
                             <div class="col-md-6">
                             <div class="form-group">
 
@@ -376,20 +388,19 @@ session_start();
 
                             <div class="col-md-6">
                             <div class="form-group">
-
                             <label for="transkrip">Transkrip Nilai</label><br>
-                            <input type="file" name="upload" accept="application/pdf">
+                            <input type="file" name="transkrip" accept="application/pdf">
                             </div>
                             </div>
-
 
                             <div class="col-md-6">
                             <div class="form-group">
                             <label for="rekomendasi">Surat Rekomendasi Kaprodi</label><br>
-                            <input type="file" name="upload" accept="application/pdf">
+                            <input type="file" name="rekomendasi" accept="application/pdf">
                             </div>
                             </div>
                         </div>
+
                         <button type="submit" class="btn btn-success">Submit</button>
                           
                             </div>

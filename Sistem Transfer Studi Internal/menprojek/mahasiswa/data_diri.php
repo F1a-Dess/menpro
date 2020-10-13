@@ -1,5 +1,15 @@
 <?php
 require_once '../config/koneksi.php';
+session_start();
+    
+    if($_SESSION['email']=="")
+    {
+        header("location:../login/accdenied.php");
+    }
+    if($_SESSION['level']!="mahasiswa")
+    {
+        header("location:../login/accdenied.php");
+    } 
 
 $nama = $nim_asal = $prodi_asal = $fakultas_asal = $alamat = $kota = $nohp = $smt_pindah = $thn_akademik_pindah = $prodi_tujuan = $fakultas_tujuan = $transkrip = $rekomendasi = "";
 
@@ -8,10 +18,13 @@ $nama_err = $nim_asal_err = $prodi_asal_err = $fakultas_asal_err = $alamat_err =
 if($_SERVER["REQUEST_METHOD"] == "POST"){ 
 
     $input_nama = trim($_POST["nama"]);
-    if(empty($input_nama)){ 
-         $nama_err = 'Form harus diisi !';      
-    } else{ 
-        $nama = $input_nama; 
+    if(empty($input_nama)){
+        $nama_err = "silakan input nama yang benar.";
+    } elseif(!filter_var(trim($_POST["nama"]), FILTER_VALIDATE_REGEXP,
+        array("options"=>array("regexp"=>"/^[a-zA-Z'-.\s ]+$/")))){
+        $nama_err = 'Silahkan input nama yang valid.';
+    } else{
+        $nama = $input_nama;
     }
 
     $input_nim_asal = trim($_POST["nim_asal"]);
@@ -50,10 +63,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
 
     $input_nohp = trim($_POST["nohp"]);
-    if(empty($input_nohp)){ 
-         $nohp_err = 'Form harus diisi !';      
-    } else{ 
-        $nohp = $input_nohp; 
+    if(empty($input_nohp)){
+        $nohp_err = "Input no HP hanya angka.";
+    } elseif(!ctype_digit($input_nohp)){
+        $nohp_err = 'hanya nilai/integer angka.';
+    } else{
+        $nohp = $input_nohp;
     }
 
     $input_smt_pindah = trim($_POST["smt_pindah"]);
@@ -65,7 +80,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     $input_thn_akademik_pindah = trim($_POST["thn_akademik_pindah"]);
     if(empty($input_thn_akademik_pindah)){ 
-         $thn_akademik_err = 'Form harus diisi !';      
+         $thn_akademik_pindah_err = 'Form harus diisi !';      
     } else{ 
         $thn_akademik_pindah = $input_thn_akademik_pindah; 
     }
@@ -84,29 +99,29 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $fakultas_tujuan = $input_fakultas_tujuan; 
     }
 
-    $input_transkrip = trim($_POST["transkrip"]);
-    if(empty($input_transkrip)){ 
-         $transkrip_err = 'Form harus diisi !';      
-    } else{ 
-        $transkrip = $input_transkrip; 
-    }
+    // $input_transkrip = trim($_POST["transkrip"]);
+    // if(empty($input_transkrip)){ 
+    //      $transkrip_err = 'Form harus diisi !';      
+    // } else{ 
+    //     $transkrip = $input_transkrip; 
+    // }
 
-    $input_rekomendasi = trim($_POST["rekomendasi"]);
-    if(empty($input_rekomendasi)){ 
-         $rekomendasi_err = 'Form harus diisi !';      
-    } else{ 
-        $rekomendasi = $input_rekomendasi; 
-    }
+    // $input_rekomendasi = trim($_POST["rekomendasi"]);
+    // if(empty($input_rekomendasi)){ 
+    //      $rekomendasi_err = 'Form harus diisi !';      
+    // } else{ 
+    //     $rekomendasi = $input_rekomendasi; 
+    // }
 
     
 
-    if (empty($nama_err) && empty($nim_asal_err) && empty($prodi_asal_err) && empty($fakultas_asal_err) && empty($alamat_err) && empty($kota_err) && empty($nohp_err) && empty($smt_pindah_err) && empty($thn_akademik_err) && empty($prodi_tujuan_err) && empty($fakultas_tujuan_err) && empty($transkrip_err) && empty($rekomendasi_err)){
+    if (empty($nama_err) && empty($nim_asal_err) && empty($prodi_asal_err) && empty($fakultas_asal_err) && empty($alamat_err) && empty($kota_err) && empty($nohp_err) && empty($smt_pindah_err) && empty($thn_akademik_pindah_err) && empty($prodi_tujuan_err) && empty($fakultas_tujuan_err)){
 
-        $sql = "INSERT INTO data_mhs (nama, nim_asal, prodi_asal, fakultas_asal, alamat, kota, nohp, smt_pindah, thn_akademik_pindah, prodi_tujuan, fakultas_tujuan, transkrip, rekomendasi) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO data_mhs (nama, nim_asal, prodi_asal, fakultas_asal, alamat, kota, nohp, smt_pindah, thn_akademik_pindah, prodi_tujuan, fakultas_tujuan) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         if($stmt = $connect->prepare($sql)){ 
             // Bind variables to the prepared statement as parameters 
-            $stmt->bind_param("ssssssissssss", $param_nama, $param_nim_asal, $param_prodi_asal, $param_fakultas_asal, $param_alamat, $param_kota, $param_nohp, $param_smt_pindah, $param_thn_akademik_pindah, $param_prodi_tujuan, $param_fakultas_tujuan, $param_transkrip, $param_rekomendasi); 
+            $stmt->bind_param("ssssssissss", $param_nama, $param_nim_asal, $param_prodi_asal, $param_fakultas_asal, $param_alamat, $param_kota, $param_nohp, $param_smt_pindah, $param_thn_akademik_pindah, $param_prodi_tujuan, $param_fakultas_tujuan); 
             // Set parameters 
             $param_nama = $nama;
             $param_nim_asal = $nim_asal;
@@ -119,14 +134,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_thn_akademik_pindah = $thn_akademik_pindah; 
             $param_prodi_tujuan = $prodi_tujuan;
             $param_fakultas_tujuan = $fakultas_tujuan;
-            $param_transkrip = $transkrip;
-            $param_rekomendasi = $rekomendasi;
+            // $param_transkrip = $transkrip;
+            // $param_rekomendasi = $rekomendasi;
 
 
             // Attempt to execute the prepared statement 
             if($stmt->execute()){ 
                 // Records created successfully. Redirect to landing page 
-                header("location: data_diri.php"); 
+                header("location: mahasiswa.php"); 
                 exit(); 
             } else{ 
                 echo "Something went wrong. Please try again later."; 
@@ -171,37 +186,37 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="row"> 
                 <div class="col-md-12"> 
                     <div class="page-header"> 
-                        <h2>Nota Beli</h2> 
+                        <h2>Data Diri</h2> 
                     </div> 
-                    <p>Masukkan Nota Beli baru disini</p> 
+                    <p>Masukkan Data Diri</p> 
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post"> 
                         <div> 
                         <div class="form-group <?php echo (!empty($nama_err)) ? 'has-error' : ''; ?>">
-                            <label>No Nota</label> 
+                            <label>Nama Lengkap</label> 
                             <input type="text" name="nama" class="form-control" value="<?php echo $nama; ?>"> 
                             <span class="help-block"><?php echo $nama_err;?></span>
                         </div>
 
-                        <div class="form-group <?php echo (!empty($kota_err)) ? 'has-error' : ''; ?>">
-                            <label>Tanggal</label> 
-                            <input type="date" name="kota" class="form-control" value="<?php echo $kota; ?>"> 
-                            <span class="help-block"><?php echo $kota_err;?></span>
+                        <div class="form-group <?php echo (!empty($nim_asal_err)) ? 'has-error' : ''; ?>"> 
+                            <label>NIM</label> 
+                            <input type="text" name="nim_asal" class="form-control" value="<?php echo $nim_asal; ?>"> 
+                            <span class="help-block"><?php echo $nim_asal_err;?></span>
                         </div>
 
                         <div class="form-group <?php echo (!empty($prodi_asal_err)) ? 'has-error' : ''; ?>">
-                            <label>Kode Pemasok</label> 
+                            <label>Prodi Asal</label> 
                             <select name="prodi_asal" class="form-control" value="<?php echo $prodi_asal; ?>"> 
                             <option value=""> Please Select</option>
                                 <?php
-                                $sql = "select * from pemasok"; 
+                                $sql = "select * from prodi"; 
                                 if($result = $connect->query($sql)){
                                     if($result->num_rows > 0){
                                 while($row = $result->fetch_array()){ 
-                                    echo "<option value=\"".$row['prodi_asal']."\" ";
-                                if ($prodi_asal == $row['prodi_asal']) {
+                                    echo "<option value=\"".$row['prodi']."\" ";
+                                if ($prodi_asal == $row['prodi']) {
                                     echo "selected";
                                         }
-                                    echo ">".$row['nama']." ---- ".$row['prodi_asal']."</option>";
+                                    echo "<option>".$row['prodi']."</option>";
                                     }
                                 } 
                                 else{
@@ -218,21 +233,21 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             </select> 
                             <span class="help-block"><?php echo $prodi_asal_err;?></span>
                         </div>
-                        
-                        <div class="form-group <?php echo (!empty($nim_asal_err)) ? 'has-error' : ''; ?>"> 
-                            <label>Kode Barang</label> 
-                            <select name="nim_asal" class="form-control" value="<?php echo $nim_asal; ?>"> 
+
+                        <div class="form-group <?php echo (!empty($fakultas_asal_err)) ? 'has-error' : ''; ?>">
+                            <label>Fakultas Asal</label> 
+                            <select name="fakultas_asal" class="form-control" value="<?php echo $fakultas_asal; ?>"> 
                             <option value=""> Please Select</option>
                                 <?php
-                                $sql = "select * from barang"; 
+                                $sql = "select * from fakultas"; 
                                 if($result = $connect->query($sql)){
                                     if($result->num_rows > 0){
                                 while($row = $result->fetch_array()){ 
-                                    echo "<option value=\"".$row['nim_asal']."\" ";
-                                if ($nim_asal == $row['nim_asal']) {
+                                    echo "<option value=\"".$row['fakultas']."\" ";
+                                if ($fakultas_asal == $row['fakultas']) {
                                     echo "selected";
                                         }
-                                    echo ">".$row['nmBrg']." ---- ".$row['nim_asal']."</option>";
+                                    echo "<option>".$row['fakultas']."</option>";
                                     }
                                 } 
                                 else{
@@ -243,29 +258,108 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                     echo "ERROR: Could not able to execute $sql. " . $connect->error;
                                     }  
                  
-                                $connect->close();
+                                //$connect->close();
                                 ?>
 
                             </select> 
-                            <span class="help-block"><?php echo $nim_asal_err;?></span> 
+                            <span class="help-block"><?php echo $fakultas_asal_err;?></span>
                         </div>
 
-                        <div class="form-group <?php echo (!empty($fakultas_asal_err)) ? 'has-error' : ''; ?>"> 
-                            <label>Jumlah</label> 
-                            <input type="number" name="fakultas_asal" class="form-control" value="<?php echo $fakultas_asal; ?>"> 
-                            <span class="help-block"><?php echo $fakultas_asal_err;?></span> 
-                        </div>
 
                         <div class="form-group <?php echo (!empty($alamat_err)) ? 'has-error' : ''; ?>">
-                            <label>alamat</label> 
-                            <input type="number" name="alamat" class="form-control" value="<?php echo $alamat; ?>"> 
+                            <label>Alamat</label> 
+                            <textarea name="alamat" class="form-control"><?php echo $alamat; ?></textarea>
                             <span class="help-block"><?php echo $alamat_err;?></span>
+                        </div>
+
+                        <div class="form-group <?php echo (!empty($kota_err)) ? 'has-error' : ''; ?>">
+                            <label>Kota</label> 
+                            <input type="text" name="kota" class="form-control" value="<?php echo $kota; ?>"> 
+                            <span class="help-block"><?php echo $kota_err;?></span>
                         </div>
                         
                         <div class="form-group <?php echo (!empty($nohp_err)) ? 'has-error' : ''; ?>"> 
-                            <label>nohperangan</label> 
+                            <label>No HP</label> 
                             <input type="text" name="nohp" class="form-control" value="<?php echo $nohp; ?>"> 
                             <span class="help-block"><?php echo $nohp_err;?></span> 
+                        </div>
+
+                        <div class="form-group <?php echo (!empty($smt_pindah_err)) ? 'has-error' : ''; ?>"> 
+                            <label>Semester Pindah</label> 
+                            <select id="smt_pindah" name="smt_pindah">
+                                <option value="">Please Select</option>
+                                <option value="ganjil">Ganjil</option>
+                                <option value="genap">Genap</option>     
+                            </select>
+                            <span class="help-block"><?php echo $smt_pindah_err;?></span> 
+                        </div>
+
+                        <div class="form-group <?php echo (!empty($thn_akademik_pindah_err)) ? 'has-error' : ''; ?>"> 
+                            <label>Tahun Akademik</label> 
+                            <input type="text" name="thn_akademik_pindah" class="form-control" value="<?php echo $thn_akademik_pindah; ?>"> 
+                            <span class="help-block"><?php echo $thn_akademik_pindah_err;?></span> 
+                        </div>
+
+                        <div class="form-group <?php echo (!empty($prodi_tujuan_err)) ? 'has-error' : ''; ?>">
+                            <label>Prodi Tujuan</label> 
+                            <select name="prodi_tujuan" class="form-control" value="<?php echo $prodi_tujuan; ?>"> 
+                            <option value=""> Please Select</option>
+                                <?php
+                                $sql = "select * from prodi"; 
+                                if($result = $connect->query($sql)){
+                                    if($result->num_rows > 0){
+                                while($row = $result->fetch_array()){ 
+                                    echo "<option value=\"".$row['prodi']."\" ";
+                                if ($prodi_tujuan == $row['prodi']) {
+                                    echo "selected";
+                                        }
+                                    echo "<option>".$row['prodi']."</option>";
+                                    }
+                                } 
+                                else{
+                                    echo "<p class='lead'><em>No records were found.</em></p>";
+                                    }
+                                } 
+                                else{
+                                    echo "ERROR: Could not able to execute $sql. " . $connect->error;
+                                    }  
+                 
+                                //$connect->close();
+                                ?>
+
+                            </select> 
+                            <span class="help-block"><?php echo $prodi_tujuan_err;?></span>
+                        </div>
+
+                        <div class="form-group <?php echo (!empty($fakultas_tujuan_err)) ? 'has-error' : ''; ?>">
+                            <label>Fakultas Tujuan</label> 
+                            <select name="fakultas_tujuan" class="form-control" value="<?php echo $fakultas_tujuan; ?>"> 
+                            <option value=""> Please Select</option>
+                                <?php
+                                $sql = "select * from fakultas"; 
+                                if($result = $connect->query($sql)){
+                                    if($result->num_rows > 0){
+                                while($row = $result->fetch_array()){ 
+                                    echo "<option value=\"".$row['fakultas']."\" ";
+                                if ($fakultas_tujuan == $row['fakultas']) {
+                                    echo "selected";
+                                        }
+                                    echo "<option>".$row['fakultas']."</option>";
+                                    }
+                                } 
+                                else{
+                                    echo "<p class='lead'><em>No records were found.</em></p>";
+                                    }
+                                } 
+                                else{
+                                    echo "ERROR: Could not able to execute $sql. " . $connect->error;
+                                    }  
+                 
+                                //$connect->close();
+                                ?>
+
+                            </select> 
+                            <span class="help-block"><?php echo $fakultas_tujuan_err;?></span>
                         </div>
 
                         <div> 
