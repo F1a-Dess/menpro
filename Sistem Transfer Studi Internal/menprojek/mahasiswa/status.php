@@ -24,17 +24,6 @@ $result3 = $link->query($sql3);
 $row = $result3->fetch_array();
 $id = $row['id'];
 
-//halaman status
-$sql = "SELECT * FROM user WHERE email = '".$email."'";
-$result = $link->query($sql);
-$row = $result->fetch_array();
-@$isi_form = $row['isi_form'];
-
-$sql4 = "SELECT * FROM progress WHERE user_id = '".$id."'";
-$result4 = $link->query($sql4);
-$row = $result4->fetch_array();
-$cek_form = $row['cek_form'];
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -198,7 +187,18 @@ $cek_form = $row['cek_form'];
 				<div class="col-sm-4">
 					<h1>Status</h1>
 					<br>
-					<p><strong><?php echo "Checked"; ?></strong></p>
+					<p>
+						<strong>
+						<?php 
+							$sql = "SELECT * FROM data_mhs WHERE id = '".$id."'";
+							$result = $link->query($sql);
+							$row = $result->fetch_array();
+							$isi_form = $row['isi_form'];
+							if ($isi_form = 1) {
+								echo "Sudah Mengisi";
+							} ?>
+						</strong>
+					</p>
 					<p></p>
 					<p></p>
 					<p></p>

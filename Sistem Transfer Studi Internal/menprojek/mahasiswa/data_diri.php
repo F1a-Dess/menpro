@@ -11,9 +11,9 @@ session_start();
         header("location:../login/accdenied.php");
     } 
 
-$nama = $nim_asal = $prodi_asal = $fakultas_asal = $alamat = $kota = $nohp = $smt_pindah = $thn_akademik_pindah = $prodi_tujuan = $fakultas_tujuan = $transkrip = $rekomendasi = "";
+$nama = $nim_asal = $prodi_asal = $fakultas_asal = $alamat = $kota = $nohp = $smt_pindah = $thn_akademik_pindah = $prodi_tujuan = $fakultas_tujuan = $transkrip = $rekomendasi = $pernyataan_ortu = "";
 
-$nama_err = $nim_asal_err = $prodi_asal_err = $fakultas_asal_err = $alamat_err = $kota_err = $nohp_err = $smt_pindah_err = $thn_akademik_pindah_err = $prodi_tujuan_err = $fakultas_tujuan_err = $transkrip_err = $rekomendasi_err = "";
+$nama_err = $nim_asal_err = $prodi_asal_err = $fakultas_asal_err = $alamat_err = $kota_err = $nohp_err = $smt_pindah_err = $thn_akademik_pindah_err = $prodi_tujuan_err = $fakultas_tujuan_err = $transkrip_err = $rekomendasi_err = $pernyataan_ortu_err ="";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){ 
 
@@ -98,30 +98,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     } else{ 
         $fakultas_tujuan = $input_fakultas_tujuan; 
     }
-
-    // $input_transkrip = trim($_POST["transkrip"]);
-    // if(empty($input_transkrip)){ 
-    //      $transkrip_err = 'Form harus diisi !';      
-    // } else{ 
-    //     $transkrip = $input_transkrip; 
-    // }
-
-    // $input_rekomendasi = trim($_POST["rekomendasi"]);
-    // if(empty($input_rekomendasi)){ 
-    //      $rekomendasi_err = 'Form harus diisi !';      
-    // } else{ 
-    //     $rekomendasi = $input_rekomendasi; 
-    // }
-
-    
+  
 
     if (empty($nama_err) && empty($nim_asal_err) && empty($prodi_asal_err) && empty($fakultas_asal_err) && empty($alamat_err) && empty($kota_err) && empty($nohp_err) && empty($smt_pindah_err) && empty($thn_akademik_pindah_err) && empty($prodi_tujuan_err) && empty($fakultas_tujuan_err)){
 
-        $sql = "INSERT INTO data_mhs (nama, nim_asal, prodi_asal, fakultas_asal, alamat, kota, nohp, smt_pindah, thn_akademik_pindah, prodi_tujuan, fakultas_tujuan) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO data_mhs (nama, nim_asal, prodi_asal, fakultas_asal, alamat, kota, nohp, smt_pindah, thn_akademik_pindah, prodi_tujuan, fakultas_tujuan, isi_form) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)";
 
         if($stmt = $connect->prepare($sql)){ 
             // Bind variables to the prepared statement as parameters 
-            $stmt->bind_param("ssssssissss", $param_nama, $param_nim_asal, $param_prodi_asal, $param_fakultas_asal, $param_alamat, $param_kota, $param_nohp, $param_smt_pindah, $param_thn_akademik_pindah, $param_prodi_tujuan, $param_fakultas_tujuan); 
+            $stmt->bind_param("ssssssissss", $param_nama, $param_nim_asal, $param_prodi_asal, $param_fakultas_asal, $param_alamat, $param_kota, $param_nohp, $param_smt_pindah, $param_thn_akademik_pindah, $param_prodi_tujuan, $param_fakultas_tujuan);
+
             // Set parameters 
             $param_nama = $nama;
             $param_nim_asal = $nim_asal;
@@ -134,9 +120,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $param_thn_akademik_pindah = $thn_akademik_pindah; 
             $param_prodi_tujuan = $prodi_tujuan;
             $param_fakultas_tujuan = $fakultas_tujuan;
-            // $param_transkrip = $transkrip;
-            // $param_rekomendasi = $rekomendasi;
-
 
             // Attempt to execute the prepared statement 
             if($stmt->execute()){ 
@@ -361,10 +344,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             </select> 
                             <span class="help-block"><?php echo $fakultas_tujuan_err;?></span>
                         </div>
-
                         <div> 
                         <input type="submit" class="btn btn-primary" value="Submit"> 
-                        <a href="index_notabeli.php" class="btn btn-default">Cancel</a> 
+                        <a href="mahasiswa.php" class="btn btn-default">Cancel</a>
+                        <br><br><br> 
                     </form> 
                 </div> 
             </div>

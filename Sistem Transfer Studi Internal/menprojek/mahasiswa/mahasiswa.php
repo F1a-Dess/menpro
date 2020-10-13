@@ -126,7 +126,7 @@ session_start();
 					<div class="column left" style="background-color:white;">
 						<div id="mySidenav" class="sidenav">
 							<a href="mahasiswa.php" id="home" class="fa fa-fw fa-home"></a>
-							<a href="form.php" id="form" class="fa fa-fw fa-file"></a>
+							<a href="data_diri.php" id="form" class="fa fa-fw fa-file"></a>
 							<a href="status.php" id="status" class="fa fa-fw fa-map-pin"></a>
 							<a href="#" id="notification" class="fa fa-fw fa-envelope"></a>
 							<a href="../login/logout.php" id="logout" class="fa fa-fw fa-sign-out"></a>
