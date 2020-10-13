@@ -6,7 +6,7 @@ session_start();
     {
         header("location:../login/accdenied.php");
     }
-    if($_SESSION['level']!="mahasiswa")
+    if($_SESSION['level']!="baa")
     {
         header("location:../login/accdenied.php");
     }  
