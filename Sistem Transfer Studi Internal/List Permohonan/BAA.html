@@ -11,57 +11,48 @@
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style type="text/css">
-      .center {
-        display: block;
-        margin-top: 100pt;
-        margin-left: 170pt;
-        margin-right: auto;
-        width: 70%;
-      }
+		/* The sidebar menu */
+		.sidenav {
+		  height: 100%; /* Full-height: remove this if you want "auto" height */
+		  width: 200px; /* Set the width of the sidebar */
+		  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+		  z-index: 1; /* Stay on top */
+		  top: 0; /* Stay at the top */
+		  left: 0;
+		  background-color: #490251; /* Purple */
+		  overflow-x: hidden; /* Disable horizontal scroll */
+		  padding-top: 1px;
+		}
 
-      #mySidenav a {
-        position: absolute; /* Position them relative to the browser window */
-        left: -80px; /* Position them outside of the screen */
-        transition: 0.3s; /* Add transition on hover */
-        padding: 15px; /* 15px padding */
-        width: 120px; /* Set a specific width */
-        text-decoration: none; /* Remove underline */
-        font-size: 20px; /* Increase font size */
-        color: white; /* White text color */
-        border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
-      }
+		/* The navigation menu links */
+		.sidenav a {
+		  padding: 20px 1px 10px 18px;
+		  text-decoration: Comic Sans;
+		  font-size: 25px;
+		  color: #f1f1f1;
+		  display: block;
+		}
 
-      #mySidenav a:hover {
-        left: 0; /* On mouse-over, make the elements appear as they should */
-      }
+		/* When you mouse over the navigation links, change their color */
+		.sidenav a:hover {
+		  color: #818181;
+		}
 
-      /* The home link: 20px from the top with a green background */
-      #home {
-        top: 20px;
-        background-color: #cd8de5;
-      }
+		/* Style page content */
+		.main {
+		  margin-left: 200px; /* Same as the width of the sidebar */
+		  padding: 0px 10px;
+		}
 
-      #form {
-        top: 80px;
-        background-color: #c377e0; 
-      }
-
-      #status {
-        top: 140px;
-        background-color: #a86cc1;
-      }
-
-      #notification {
-        top: 200px;
-        background-color: #89609e;
-      }
-
-      #logout {
-        top: 260px;
-        background-color: #484553;
-      }
+		/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+		@media screen and (max-height: 450px) {
+		  .sidenav {padding-top: 15px;}
+		  .sidenav a {font-size: 18px;}
+		}
     </style>
   </head>
+  
+
   
   <body>
     
@@ -84,7 +75,8 @@
     </nav>   -->
     <!-- /header -->      
 
-    <div id="mySidenav" class="sidenav">
+<!--
+	<div id="mySidenav" class="sidenav">
       <a href="mahasiswa.php" id="home" class="fa fa-fw fa-home"></a>
       <a href="#" id="form" class="fa fa-fw fa-file"></a>
       <a href="status.php" id="status" class="fa fa-fw fa-map-pin"></a>
@@ -92,10 +84,46 @@
       <a href="../login/logout.php" id="logout" class="fa fa-fw fa-sign-out"></a>
     </div>
 
+<nav class="navbar navbar-default navbar-fixed-top">
+
+		<a class="navbar-brand"> <img src="logo.png" width="100px" height="50px"> </a>
+		
+		<ul class="nav navbar-nav">
+                <li><a href="index.php">Beranda</a></li>
+                <li><a href="ia.php">Kaprodi</a></li>
+                <li class="active"><a href="ib.php">BAA</a></li> 
+                <li><a href="ip.php">Status</a></li> 
+		</ul>
+		
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="daftar.html"><span class="glyphicon glyphicon-user"></span> Daftar</a></li>
+			<li><a href="masuk.html"><span class="	glyphicon glyphicon-log-in"></span> Masuk&emsp;</a></li>
+		</ul>
+			<form class="navbar-form navbar-right" role="search">
+
+			<input type="text" class="form-control" placeholder="Search">
+			<button class="btn btn-default" type="submit">
+		<i class="	glyphicon glyphicon-search"></i>
+	</div>
+</nav>
+-->
+
+<!-- Side navigation -->
+<div class="sidenav"> <p face="OCR A Std">
+<a class="sidenav-brand"> <img src="logo.png" width="150px" height="80px"> </a>
+  <a href="#" id="home" class="	glyphicon glyphicon-home"> Home</a>
+  <a href="#" id="form" class="glyphicon glyphicon-edit"> Form</a>
+  <a href="Status.html" id="status" class="	glyphicon glyphicon-bell"> Status</a>
+  <a href="BAA.html" id="page" class="glyphicon glyphicon-envelope" "active"> BAA</a>
+  <a href="Kaprodi.html" id="page" class="glyphicon glyphicon-envelope"> Kaprodi</a>
+  <a href="../login/logout.php" id="logout" class="	glyphicon glyphicon-log-out"> Logout</a>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
+
 <!-- page-content-wrapper -->
     <div class="wrapper">
         <div class="container-fluid"> 
-			<div id="content" class="col-md-10 col-md-offset-1 col-xs-12">
+			<div id="content" class="col-md-9 col-md-offset-2 col-xs-1">
 				<div class="row"> 
 					<div class="col-md-12"> 
 						<div class="page-header clearfix"> 
@@ -105,8 +133,8 @@
 									<thead>
 										<tr> 
 											<th class = "col-xs-7">Nama Mahasiswa</th>
-											<th>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Dokumen</th>     
-											<th>&emsp;&emsp;&emsp;Keputusan</th>
+											<th>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Dokumen</th>     
+											<th>&emsp;&emsp;&emsp;&emsp; Hasil</th>
 										</tr>
 									</thead>
 									
@@ -121,76 +149,8 @@
 												<a href="#.php" class="btn btn-primary">Transkrip</a>
 											</td>											
 											<td align = "center">
-													<a href="#" class="btn btn-success">Terima</a>
-													<a href="#" class="btn btn-danger">Tolak</a>
-											</td>
-										</tr>
-									</tbody>
-									
-									<tbody>
-										<tr>
-											<td>
-												Mellin Llimen
-											</td>											
-											<td align = "center">
-												<a href="#.php" class="btn btn-primary">Form</a>
-												<a href="#.php" class="btn btn-primary">Rekomendasi</a>
-												<a href="#.php" class="btn btn-primary">Transkrip</a>
-											</td>											
-											<td align = "center">
-													<a href="#" class="btn btn-success">Terima</a>
-													<a href="#" class="btn btn-danger">Tolak</a>
-											</td>
-										</tr>
-									</tbody>
-									
-									<tbody>
-										<tr>
-											<td>
-												Osin Grahapadma
-											</td>											
-											<td align = "center">
-												<a href="#.php" class="btn btn-primary">Form</a>
-												<a href="#.php" class="btn btn-primary">Rekomendasi</a>
-												<a href="#.php" class="btn btn-primary">Transkrip</a>
-											</td>											
-											<td align = "center">
-													<a href="#" class="btn btn-success">Terima</a>
-													<a href="#" class="btn btn-danger">Tolak</a>
-											</td>
-										</tr>
-									</tbody>
-									
-									<tbody>
-										<tr>
-											<td>
-												Agus Pesila
-											</td>											
-											<td align = "center">
-												<a href="#.php" class="btn btn-primary">Form</a>
-												<a href="#.php" class="btn btn-primary">Rekomendasi</a>
-												<a href="#.php" class="btn btn-primary">Transkrip</a>
-											</td>											
-											<td align = "center">
-													<a href="#" class="btn btn-success">Terima</a>
-													<a href="#" class="btn btn-danger">Tolak</a>
-											</td>
-										</tr>
-									</tbody>
-									
-									<tbody>
-										<tr>
-											<td>
-												Putra Hartono
-											</td>											
-											<td align = "center">
-												<a href="#.php" class="btn btn-primary">Form</a>
-												<a href="#.php" class="btn btn-primary">Rekomendasi</a>
-												<a href="#.php" class="btn btn-primary">Transkrip</a>
-											</td>											
-											<td align = "center">
-													<a href="#" class="btn btn-success">Terima</a>
-													<a href="#" class="btn btn-danger">Tolak</a>
+													<a href="#" class="btn btn-success">Lengkap</a>
+													<a href="#" class="btn btn-danger">Kurang</a>
 											</td>
 										</tr>
 									</tbody>
@@ -204,10 +164,10 @@
 	</div>
 </div>
 
-<br><br><br>
+<br><br>
 
 <div class="footer" align="center">
-  <p color="black" face="OCR A Std" size="2"><strong> &copy; Kelompok 4</strong></p>
+  <p color="black" face="OCR A Std" size="2"><strong>&copy; Kelompok 4</strong></p>
 </div>
 
 <!--
