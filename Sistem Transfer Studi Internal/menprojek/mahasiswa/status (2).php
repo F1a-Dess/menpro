@@ -122,14 +122,13 @@ $id = $row['id'];
 									$row = $result->fetch_array();
 									$isi_form = $row['isi_form'];
 									if ($isi_form == 0) {
-										echo "<a href='data_diri.php?id=". $id ."' title='Isi Data Diri' datatoggle='tooltip'><span class='btn btn-success'>Isi Data Diri</span></a>";
+										echo "<a href='data_diri.php' title='Isi Data Diri' datatoggle='tooltip'><span class='btn btn-success'>Isi Data Diri</span></a>";
 									} elseif ($isi_form == 1) {
 										echo '<id="status" class="fa fa-check-square fa fa-clock-o"> Sudah Mengisi';
 									} else{
-										echo "<a href='edit_datadiri.php?id=". $id ."' title='Edit Data Diri' datatoggle='tooltip'><span class='btn btn-success'>Edit Data Diri</span></a>";
+										echo "<a href='edit_datadiri.php?user_id=". $id ."' title='Edit Data Diri' datatoggle='tooltip'><span class='btn btn-success'>Edit Data Diri</span></a>";
 									}
 									?>
-
 								</td>
 							</tr>
 
@@ -138,16 +137,21 @@ $id = $row['id'];
 									Cek berkas dan formulir
 								</td>
 								<td align = "center">
-									<id="status" class="fa fa-clock-o"> Dalam Proses</id="status">
-								</td>
-							</tr>
-
-							<tr>
-								<td>
-									Keputusan Kaprodi Baru
-								</td>
-								<td align = "center">
-									<id="status" class="fa fa-hourglass-half"> Menunggu</id="status">
+									<?php 
+									$link = mysqli_connect("localhost","root","","transfer_mhs_intern");
+									$sql = "SELECT * FROM data_mhs WHERE user_id = '".$id."'";
+									$result = $link->query($sql);
+									$row = $result->fetch_array();
+									$cek_form = $row['cek_form'];
+									if ($cek_form == 0) {
+										echo '<id="status" class="fa fa-hourglass-half"> Menunggu</id="status">';
+									} elseif ($cek_form == 1) {
+										echo '<id="status" class="fa fa-clock-o"> Dalam Proses</id="status">';
+									} else{
+										echo '<id="status" class="fa fa-check-square fa fa-clock-o"> Success';
+									}
+									?>
+									
 								</td>
 							</tr>
 
@@ -156,7 +160,20 @@ $id = $row['id'];
 									Keputusan BAA
 								</td>
 								<td align = "center">
-									<id="status" class="fa fa-hourglass-half"> Menunggu</id="status">
+									<?php 
+									$link = mysqli_connect("localhost","root","","transfer_mhs_intern");
+									$sql = "SELECT * FROM data_mhs WHERE user_id = '".$id."'";
+									$result = $link->query($sql);
+									$row = $result->fetch_array();
+									$kep_baa = $row['kep_baa'];
+									if ($kep_baa == 0) {
+										echo '<id="status" class="fa fa-hourglass-half"> Menunggu</id="status">';
+									} elseif ($kep_baa == 1) {
+										echo '<id="status" class="fa fa-check-square fa fa-clock-o"> Diterima';
+									} else{
+										echo '<id="status" class="fa fa-times"> Ditolak';
+									}
+									?>
 								</td>
 							</tr>
 
@@ -165,7 +182,18 @@ $id = $row['id'];
 									Biaya studi
 								</td>
 								<td align = "center">
-									<id="status" class="fa fa-hourglass-half"> Menunggu</id="status">
+									<?php 
+									$link = mysqli_connect("localhost","root","","transfer_mhs_intern");
+									$sql = "SELECT * FROM data_mhs WHERE user_id = '".$id."'";
+									$result = $link->query($sql);
+									$row = $result->fetch_array();
+									$biaya_studi = $row['biaya_studi'];
+									if ($biaya_studi == 0) {
+										echo '<id="status" class="fa fa-hourglass-half"> Menunggu</id="status">';
+									} else ($biaya_studi == 1) {
+										echo "<a href='biaya_studi.php?id=". $row['id'] ."' title='Cek Biaya Studi' datatoggle='tooltip'><span class='btn btn-primary'> Cek Biaya Studi</span></a>";
+									}
+									?>
 								</td>
 							</tr>
 
@@ -174,7 +202,18 @@ $id = $row['id'];
 									Pembayaran
 								</td>
 								<td align = "center">
-									<id="status" class="fa fa-hourglass-half"> Menunggu</id="status">
+									<?php 
+									$link = mysqli_connect("localhost","root","","transfer_mhs_intern");
+									$sql = "SELECT * FROM data_mhs WHERE user_id = '".$id."'";
+									$result = $link->query($sql);
+									$row = $Bukti Bayarresult->fetch_array();
+									$bayar = $row['bayar'];
+									if ($bayar == 0) {
+										echo '<id="status" class="fa fa-hourglass-half"> Menunggu</id="status">';
+									} else ($bayar == 1) {
+										echo "<a href='upload_bukti_bayar.php?id=". $row['id'] ."' title='Upload Bukti Bayar' datatoggle='tooltip'><span class='btn btn-primary'> Upload Bukti Bayar</span></a>";
+									}
+									?>
 								</td>
 							</tr>
 
@@ -183,7 +222,18 @@ $id = $row['id'];
 									Pengiriman NIM Baru
 								</td>
 								<td align = "center">
-									<id="status" class="fa fa-hourglass-half"> Menunggu</id="status">
+									<?php 
+									$link = mysqli_connect("localhost","root","","transfer_mhs_intern");
+									$sql = "SELECT * FROM data_mhs WHERE user_id = '".$id."'";
+									$result = $link->query($sql);
+									$row = $result->fetch_array();
+									$nim_baru = $row['nim_baru'];
+									if ($nim_baru == 0) {
+										echo '<id="status" class="fa fa-hourglass-half"> Menunggu</id="status">';
+									} else ($nim_baru == 1) {
+										echo "<a href='nim_baru.php?id=". $row['id'] ."' title='NIM Baru' datatoggle='tooltip'><span class='btn btn-primary'> NIM Baru</span></a>";
+									}
+									?>
 								</td>
 							</tr>
 
@@ -192,7 +242,18 @@ $id = $row['id'];
 									Selesai
 								</td>
 								<td align = "center">
-									<id="status" class="fa fa-hourglass-half"> Menunggu</id="status">
+									<?php 
+									$link = mysqli_connect("localhost","root","","transfer_mhs_intern");
+									$sql = "SELECT * FROM data_mhs WHERE user_id = '".$id."'";
+									$result = $link->query($sql);
+									$row = $result->fetch_array();
+									$selesai = $row['selesai'];
+									if ($selesai == 0) {
+										echo '<id="status" class="fa fa-hourglass-half"> Menunggu</id="status">';
+									} else ($selesai == 1) {
+										echo '<id="status" class="fa fa-check-square fa fa-clock-o"> Selamat';
+									}
+									?>
 								</td>
 							</tr>
 						</tbody>

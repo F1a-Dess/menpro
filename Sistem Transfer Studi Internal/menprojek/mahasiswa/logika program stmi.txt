@@ -1,0 +1,37 @@
+kolom isi_form = 0 -> user bisa input
+
+kolom isi_form = 1 -> sudah isi
+
+kolom isi_form = 2 -> ulang, muncul button edit
+
+//
+
+kolom cek_form = 0 -> menunggu (user input data diri)
+      cek_form = 1 -> dalam proses
+      cek_form = 2 -> success
+
+//
+
+kolom kep_baa = 0 -> menunggu cek_form sukses
+		1 -> diterima
+		2 -> ditolak
+
+//
+
+kolom biaya_studi = 0 -> menunggu
+		    1 -> tombol download rincian biaya studi
+
+//
+
+kolom pembayaran = 0 -> menunggu
+		   1 -> tombol upload bukti bayar
+
+//
+
+kolom nim_baru = 0 -> menunggu
+		 1 -> print NIM e lsg?
+
+//
+
+kolom selesai = 0 -> menunggu
+		1 -> selamat
