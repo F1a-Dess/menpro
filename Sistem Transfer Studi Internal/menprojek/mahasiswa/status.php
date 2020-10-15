@@ -195,7 +195,7 @@ $id = $row['id'];
 							$row = $result->fetch_array();
 							$isi_form = $row['isi_form'];
 							if ($isi_form = 1) {
-								echo "Sudah Mengisi";
+								echo 'Sudah Mengisi &emsp; <i class="fa fa-check" style="font-size: 2em;"></i>';
 							} ?>
 						</strong>
 					</p>
