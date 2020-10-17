@@ -1,149 +1,143 @@
 <?php
 require_once '../config/koneksi.php';
 session_start();
-    
-    if($_SESSION['email']=="")
-    {
-        header("location:../login/accdenied.php");
-    }
-    if($_SESSION['level']!="mahasiswa")
-    {
-        header("location:../login/accdenied.php");
-    }  
 
-    $link = mysqli_connect("localhost","root","","transfer_mhs_intern");
-    $email = $_SESSION['email'];
-        $sql = "SELECT * FROM user WHERE email = '".$email."'";
-        $result = $link->query($sql);
-                $row = $result->fetch_array();
-                $status = $row['status'];
+if($_SESSION['email']=="")
+{
+	header("location:../login/accdenied.php");
+}
+if($_SESSION['level']!="mahasiswa")
+{
+	header("location:../login/accdenied.php");
+}  
 
-        $sql2 = "SELECT * FROM user WHERE email = '".$email."'";
-        $result2 = $link->query($sql2);
-                $row = $result2->fetch_array();
-                $nama = $row['nama'];
+$link = mysqli_connect("localhost","root","","transfer_mhs_intern");
+$email = $_SESSION['email'];
+$sql = "SELECT * FROM user WHERE email = '".$email."'";
+$result = $link->query($sql);
+$row = $result->fetch_array();
+$status = $row['status'];
 
-        $sql3 = "SELECT * FROM user WHERE email = '".$email."'";
-        $result3 = $link->query($sql3);
-                $row = $result3->fetch_array();
-                $id = $row['id'];
+$sql2 = "SELECT * FROM user WHERE email = '".$email."'";
+$result2 = $link->query($sql2);
+$row = $result2->fetch_array();
+$nama = $row['nama'];
+
+$sql3 = "SELECT * FROM user WHERE email = '".$email."'";
+$result3 = $link->query($sql3);
+$row = $result3->fetch_array();
+$id = $row['id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
-	<head>
+<head>
 	<meta charset="utf-8">
-    
+
 	<title>Transfer Mahasiswa Internal</title>
-    
+
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-		<style type="text/css">
-			.center 
-			{
-				display: block;
-				margin-top: 100pt;
-				margin-left: 170pt;
-				margin-right: auto;
-				width: 70%;
-			}
+	<style type="text/css">
+		.center 
+		{
+			display: block;
+			margin-top: 100pt;
+			margin-left: 170pt;
+			margin-right: auto;
+			width: 70%;
+		}
 
-			.column
-			{
-				float: left;
-				padding: 10px;
-				height: 680px;
-				width: auto;
-			}
+		.column
+		{
+			float: left;
+			/*padding: 10px;*/
+			height: 680px;
+			width: auto;
+		}
 
-			.left
-			{
-				width: 10%;
-			}
+		.left
+		{
+			width: 15%;
+		}
 
-			.right
-			{
-				width: 90%;
-			}
+		.right
+		{
+			width: 85%;
+		}
 
-			#mySidenav a 
-			{
-				position: absolute; /* Position them relative to the browser window */
-				left: -80px; /* Position them outside of the screen */
-				transition: 0.3s; /* Add transition on hover */
-				padding: 15px; /* 15px padding */
-				width: 120px; /* Set a specific width */
-				text-decoration: none; /* Remove underline */
-				font-size: 20px; /* Increase font size */
-				color: white; /* White text color */
-				border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
-			}
+		.sidenav {
+			height: 100%; /* Full-height: remove this if you want "auto" height */
+			width: 200px; /* Set the width of the sidebar */
+			position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+			z-index: 1; /* Stay on top */
+			top: 0; /* Stay at the top */
+			left: 0;
+			background-color: #490251; /* Purple */
+			overflow-x: hidden; /* Disable horizontal scroll */
+			padding-top: 1px;
+		}
 
-			#mySidenav a:hover 
-			{
-				left: 0; /* On mouse-over, make the elements appear as they should */
-			}
+		/* The navigation menu links */
+		.sidenav a {
+			padding: 20px 1px 10px 18px;
+			text-decoration: Comic Sans;
+			font-size: 23px;
+			color: #f1f1f1;
+			display: block;
+		}
 
-			/* The home link: 20px from the top with a green background */
-			#home 
-			{
-				top: 20px;
-				background-color: #cd8de5;
-			}
+		/* When you mouse over the navigation links, change their color */
+		.sidenav a:hover {
+			color: #818181;
+		}
 
-			#form 
-			{
-				top: 80px;
-				background-color: #c377e0; 
-			}
+		/* Style page content */
+		.main {
+			margin-left: 200px; /* Same as the width of the sidebar */
+			padding: 0px 10px;
+		}
 
-			#status 
-			{
-				top: 140px;
-				background-color: #a86cc1;
-			}
+		/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+		@media screen and (max-height: 450px) {
+			.sidenav {padding-top: 15px;}
+			.sidenav a {font-size: 18px;}
+		}
 
-			#notification 
-			{
-				top: 200px;
-				background-color: #89609e;
-			}
 
-			#logout 
-			{
-				top: 260px;
-				background-color: #484553;
-			}
-		</style>
-	</head>
-  
-	<body>   
-		<div id="page-content-wrapper" class="page-content-toggle">
-			<div class="container-fluid">       
-				<div class="row">
-					<div class="column left" style="background-color:white;">
-						<div id="mySidenav" class="sidenav">
-							<a href="mahasiswa.php" id="home" class="fa fa-fw fa-home"></a>
-							<a href="data_diri.php" id="form" class="fa fa-fw fa-file"></a>
-							<a href="status.php" id="status" class="fa fa-fw fa-map-pin"></a>
-							<a href="#" id="notification" class="fa fa-fw fa-envelope"></a>
-							<a href="../login/logout.php" id="logout" class="fa fa-fw fa-sign-out"></a>
-						</div>
+	</style>
+</head>
+
+<body>   
+	<div id="page-content-wrapper" class="page-content-toggle">
+		<div class="container-fluid">       
+			<div class="row">
+				<div class="column left" style="background-color:white;">
+					<div class="sidenav">
+						<a class="sidenav-brand"> <img src="../pictures/logo.png" width="150px" height="80px"> </a>
+
+						<a href="mahasiswa.php" id="home" class="active glyphicon glyphicon-home"> Home</a>
+
+						<a href="data_diri.php" id="form" class="glyphicon glyphicon-edit"> Data Diri</a>
+
+						<a href="form_pdf.php" id="page" class="glyphicon glyphicon-file"> Berkas</a>
+
+						<a href="status.php" id="status" class="	glyphicon glyphicon-bell"> Status</a>
+
+						<a href="#" id="page" class="glyphicon glyphicon-envelope"> BAA</a>
+
+						<a href="../login/logout.php" id="logout" class="	glyphicon glyphicon-log-out"> Logout</a>
 					</div>
+				</div>
 
-					<!-- <div class="column right" style="background-color:#bbb;">
-						<div class="center" align="center"> -->
-							<div class="row">
-								<div class="col-sm-6">
-									<embed type="application/pdf" src="../files/PROSEDUR TRANSFER INTERNAL.pdf" width="1200" height="675"></embed>
-								</div>
-							</div>
-						<!-- </div>
-					</div> -->
+				<div class="column right" style="background-color:white;">
+					<div align="center">
+							<embed type="application/pdf" src="../files/PROSEDUR TRANSFER INTERNAL.pdf" width="1140" height="640"></embed>
+					</div>
 				</div>
 			</div>
 		</div>
-	</body>
+	</div>
+</body>
 </html>

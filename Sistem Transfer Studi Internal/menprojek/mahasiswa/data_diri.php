@@ -11,9 +11,9 @@ session_start();
         header("location:../login/accdenied.php");
     } 
 
-$nama = $nim_asal = $prodi_asal = $fakultas_asal = $alamat = $kota = $nohp = $smt_pindah = $thn_akademik_pindah = $prodi_tujuan = $fakultas_tujuan = $transkrip = $rekomendasi = $pernyataan_ortu = "";
+$nama = $nim_asal = $prodi_asal = $fakultas_asal = $alamat = $kota = $nohp = $smt_pindah = $thn_akademik_pindah = $prodi_tujuan = $fakultas_tujuan = "";
 
-$nama_err = $nim_asal_err = $prodi_asal_err = $fakultas_asal_err = $alamat_err = $kota_err = $nohp_err = $smt_pindah_err = $thn_akademik_pindah_err = $prodi_tujuan_err = $fakultas_tujuan_err = $transkrip_err = $rekomendasi_err = $pernyataan_ortu_err ="";
+$nama_err = $nim_asal_err = $prodi_asal_err = $fakultas_asal_err = $alamat_err = $kota_err = $nohp_err = $smt_pindah_err = $thn_akademik_pindah_err = $prodi_tujuan_err = $fakultas_tujuan_err = "";
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){ 
 
@@ -102,7 +102,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if (empty($nama_err) && empty($nim_asal_err) && empty($prodi_asal_err) && empty($fakultas_asal_err) && empty($alamat_err) && empty($kota_err) && empty($nohp_err) && empty($smt_pindah_err) && empty($thn_akademik_pindah_err) && empty($prodi_tujuan_err) && empty($fakultas_tujuan_err)){
 
-        $sql = "INSERT INTO data_mhs (nama, nim_asal, prodi_asal, fakultas_asal, alamat, kota, nohp, smt_pindah, thn_akademik_pindah, prodi_tujuan, fakultas_tujuan, isi_form) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)";
+        $sql = "INSERT INTO data_mhs (nama, nim_asal, prodi_asal, fakultas_asal, alamat, kota, nohp, smt_pindah, thn_akademik_pindah, prodi_tujuan, fakultas_tujuan, user_id, isi_form) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, '$id', 1)";
 
         if($stmt = $connect->prepare($sql)){ 
             // Bind variables to the prepared statement as parameters 
