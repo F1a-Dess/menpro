@@ -11,6 +11,14 @@ session_start();
         header("location:../login/accdenied.php");
     } 
 
+    $link = mysqli_connect("localhost","root","","transfer_mhs_intern");
+    $email = $_SESSION['email'];
+
+    $sql3 = "SELECT * FROM user WHERE email = '".$email."'";
+    $result3 = $link->query($sql3);
+    $row = $result3->fetch_array();
+    $id = $row['id'];
+
 $nama = $nim_asal = $prodi_asal = $fakultas_asal = $alamat = $kota = $nohp = $smt_pindah = $thn_akademik_pindah = $prodi_tujuan = $fakultas_tujuan = "";
 
 $nama_err = $nim_asal_err = $prodi_asal_err = $fakultas_asal_err = $alamat_err = $kota_err = $nohp_err = $smt_pindah_err = $thn_akademik_pindah_err = $prodi_tujuan_err = $fakultas_tujuan_err = "";

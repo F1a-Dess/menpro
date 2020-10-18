@@ -33,12 +33,12 @@ if($row=mysqli_fetch_array($sql)) {
 		$_SESSION['level'] = "baa";
 		// alihkan ke halaman dashboard baa
 		header("location:../baa/baa.php");
-	}else if($row['level']=="kasir"){
+	}else if($row['level']=="kaprodi"){
 		// buat session login dan email
 		$_SESSION['email'] = $email;
-		$_SESSION['level'] = "kasir";
+		$_SESSION['level'] = "kaprodi";
 		// alihkan ke halaman dashboard kasir
-		header("location:../kasir/kasir.php");
+		header("location:../kaprodi/kaprodi_test.php");
 	}
 	//header("location: accgranted.php"); 
     exit();
