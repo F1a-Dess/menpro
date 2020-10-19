@@ -131,7 +131,7 @@ $id = $row['id'];
 									} elseif ($isi_form == 1) {
 										echo '<id="status" class="fa fa-check-square fa fa-clock-o"> Sudah Mengisi';
 									} else{
-										echo "<a href='edit_datadiri.php?user_id=". $id ."' title='Edit Data Diri' datatoggle='tooltip'><span class='btn btn-success'>Edit Data Diri</span></a>";
+										echo "Data tidak valid, silahkan mengisi ulang";
 									}
 									?>
 								</td>
@@ -152,7 +152,9 @@ $id = $row['id'];
 										echo '<id="status" class="fa fa-hourglass-half"> Menunggu</id="status">';
 									} elseif ($cek_form == 1) {
 										echo '<id="status" class="fa fa-clock-o"> Dalam Proses</id="status">';
-									} else{
+									} elseif ($cek_form == 3) {
+										echo "Data tidak valid, silahkan mengisi ulang";
+									}else{
 										echo '<id="status" class="fa fa-check-square fa fa-clock-o"> Success';
 									}
 									?>

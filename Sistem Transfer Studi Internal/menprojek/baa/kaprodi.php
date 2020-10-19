@@ -1,122 +1,150 @@
 <?php
 require_once '../config/koneksi.php';
 session_start();
-    
-    if($_SESSION['email']=="")
-    {
-        header("location:../login/accdenied.php");
-    }
-    if($_SESSION['level']!="baa")
-    {
-        header("location:../login/accdenied.php");
-    }  
 
-    $link = mysqli_connect("localhost","root","","transfer_mhs_intern");
-    $email = $_SESSION['email'];
-        $sql = "SELECT * FROM user WHERE email = '".$email."'";
-        $result = $link->query($sql);
-                $row = $result->fetch_array();
-                $status = $row['status'];
+if($_SESSION['email']=="")
+{
+  header("location:../login/accdenied.php");
+}
+if($_SESSION['level']!="baa")
+{
+  header("location:../login/accdenied.php");
+}  
 
-        $sql2 = "SELECT * FROM user WHERE email = '".$email."'";
-        $result2 = $link->query($sql2);
-                $row = $result2->fetch_array();
-                $nama = $row['nama'];
+$link = mysqli_connect("localhost","root","","transfer_mhs_intern");
+$email = $_SESSION['email'];
 
-        $sql3 = "SELECT * FROM user WHERE email = '".$email."'";
-        $result3 = $link->query($sql3);
-                $row = $result3->fetch_array();
-                $id = $row['id'];
+$sql2 = "SELECT * FROM user WHERE email = '".$email."'";
+$result2 = $link->query($sql2);
+$row = $result2->fetch_array();
+$nama = $row['nama'];
+
+$sql3 = "SELECT * FROM user WHERE email = '".$email."'";
+$result3 = $link->query($sql3);
+$row = $result3->fetch_array();
+$id = $row['id'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    
-    <title>Halaman BAA</title>
-    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+  <meta charset="utf-8">
 
-    <style type="text/css">
-      .center {
-        display: block;
-        margin-top: 100pt;
-        margin-left: 170pt;
-        margin-right: auto;
-        width: 70%;
-      }
+  <title>Kaprodi</title>
 
-      #mySidenav a {
-        position: absolute; /* Position them relative to the browser window */
-        left: -80px; /* Position them outside of the screen */
-        transition: 0.3s; /* Add transition on hover */
-        padding: 15px; /* 15px padding */
-        width: 120px; /* Set a specific width */
-        text-decoration: none; /* Remove underline */
-        font-size: 20px; /* Increase font size */
-        color: white; /* White text color */
-        border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
-      }
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-      #mySidenav a:hover {
-        left: 0; /* On mouse-over, make the elements appear as they should */
-      }
+  <style type="text/css">
+    .center 
+    {
+      display: block;
+      margin-top: 100pt;
+      margin-left: 170pt;
+      margin-right: auto;
+      width: 70%;
+    }
 
-      /* The home link: 20px from the top with a green background */
-      #home {
-        top: 20px;
-        background-color: #cd8de5;
-      }
+    .column
+    {
+      float: left;
+      /*padding: 10px;*/
+      height: 680px;
+      width: auto;
+    }
 
-      #kaprodi {
-        top: 80px;
-        background-color: #c377e0; 
-      }
+    .left
+    {
+      width: 15%;
+    }
 
-      #bak {
-        top: 150px;
-        background-color: #a86cc1;
-      }
+    .right
+    {
+      width: 85%;
+    }
 
-      #logout {
-        top: 220px;
-        background-color: #484553;
-      }
-    </style>
-  </head>
-  
-  <body>    
-    <div id="mySidenav" class="sidenav">
-      <a href="baa.php" id="home" class="fa fa-fw fa-home"></a>
-      <a href="kaprodi.php" id="kaprodi">Kaprodi</a>
-      <a href="#" id="bak">BAK</a>
-      <a href="../login/logout.php" id="logout" class="fa fa-fw fa-sign-out"></a>
-    </div>
+    .sidenav {
+      height: 100%; /* Full-height: remove this if you want "auto" height */
+      width: 200px; /* Set the width of the sidebar */
+      position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+      z-index: 1; /* Stay on top */
+      top: 0; /* Stay at the top */
+      left: 0;
+      background-color: #490251; /* Purple */
+      overflow-x: hidden; /* Disable horizontal scroll */
+      padding-top: 1px;
+    }
 
-<!-- page-content-wrapper -->
-    <div class="wrapper">
-        <div class="container-fluid"> 
-			<div id="content" class="col-md-10 col-md-offset-1 col-xs-12">
-				<div class="row"> 
-					<div class="col-md-12"> 
-						<div class="page-header clearfix"> 
-							<h1 class="pull-left">List Permohonan</h1> 
-							   </div>
-					<?php 
+    /* The navigation menu links */
+    .sidenav a {
+      padding: 20px 1px 10px 18px;
+      text-decoration: Comic Sans;
+      font-size: 23px;
+      color: #f1f1f1;
+      display: block;
+    }
+
+    /* When you mouse over the navigation links, change their color */
+    .sidenav a:hover {
+      color: #818181;
+    }
+
+    /* Style page content */
+    .main {
+      margin-left: 200px; /* Same as the width of the sidebar */
+      padding: 0px 10px;
+    }
+
+    /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+    @media screen and (max-height: 450px) {
+      .sidenav {padding-top: 15px;}
+      .sidenav a {font-size: 18px;}
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="container-fluid"> 
+      <div id="content" class="col-md-10 col-md-offset-1 col-xs-12">      
+        <div class="row">
+          <div class="col-md-12"> 
+            <div class="page-header clearfix"> 
+              <div class="column left" style="background-color:white;">
+                <div class="sidenav">
+                  <a class="sidenav-brand"> <img src="../pictures/logo.png" width="150px" height="80px"> </a>
+
+                  <a href="baa.php" id="home" class="active glyphicon glyphicon-home"> Home</a>
+
+                  <a href="kaprodi.php" id="kaprodi" class="active glyphicon glyphicon-user"> Kaprodi</a>
+
+                  <a href="bak.php" id="bak" class="active glyphicon glyphicon-usd"> BAK</a>
+                  
+                  <a href="../login/logout.php" id="logout" class=" glyphicon glyphicon-log-out"> Logout</a>
+                </div>
+              </div>
+
+              <div class="column right" style="background-color:white;">
+                <h1 class="pull-left">&emsp;Kaprodi</h1>
+                <div class="page-header clearfix"> 
+                    <br>
+                    <br>
+                    <h3 class="pull-left">&emsp;&emsp;List Permohonan</h3> 
+                  </div>
+                  <?php 
                     // Include config file 
                     require_once '../config/koneksi.php'; 
                      
                     // Attempt select query execution 
-                    $sql = "SELECT * FROM data_mhs"; 
+                    $sql = "SELECT * FROM data_mhs WHERE kep_BAA = 0"; 
                     if($result = $connect->query($sql)){ 
                         if($result->num_rows > 0){ 
                             echo "<table class='table table-bordered table-striped'>"; 
                                 echo "<thead>"; 
                                     echo "<tr>"; 
                                         echo "<th>Nama</th>";
+                                        echo "<th>Keterangan</th>";
                                         echo "<th>Aksi</th>"; 
                                     echo "</tr>"; 
                                 echo "</thead>"; 
@@ -124,10 +152,11 @@ session_start();
                                 while($row = $result->fetch_array()){ 
                                     echo "<tr>"; 
                                         echo "<td>" . $row['nama'] . "</td>";
+                                        echo "<td> Diterima </td>";
                                         echo "<td>";  
-                                            echo "<a href='baa.php?id=". $row['id'] ."' title='Terima' datatoggle='tooltip'><span class='btn btn-success'> Terima</span></a>"; 
+                                            echo "<a href='baa.php?id=". $row['user_id'] ."' title='BAK' datatoggle='tooltip'><span class='btn btn-success'> BAK</span></a>"; 
                                             echo "&emsp;";
-                                            echo "<a href='baa.php?id=". $row['id'] ."' title='Tolak' datatoggle='tooltip'><span class='btn btn-danger'> Tolak</span></a>"; 
+                                            echo "<a href='baa.php?id=". $row['user_id'] ."' title='Tolak' datatoggle='tooltip'><span class='btn btn-danger'> Tolak</span></a>"; 
                                         echo "</td>"; 
                                     echo "</tr>"; 
                                 } 
@@ -145,19 +174,11 @@ session_start();
                     // Close connection 
                     $connect->close(); 
                     ?> 
-							</h1>
-						</div> 
-					</div>
-				</div> 
-			</div>
-		</div>
-	</div>
-</div>
-
-<br><br><br>
-
-<div class="footer" align="center">
-  <p color="black" face="OCR A Std" size="2"><strong> &copy; Kelompok 4</strong></p>
-</div>
-</body>
-</html>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </body>
+      </html>

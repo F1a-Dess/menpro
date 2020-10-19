@@ -18,6 +18,16 @@ session_start();
     $result3 = $link->query($sql3);
     $row = $result3->fetch_array();
     $id = $row['id'];
+    
+
+    $sql = "SELECT * FROM data_mhs WHERE user_id = '".$id."'";
+    $result = $link->query($sql);
+    $row = $result->fetch_array();
+    $isi_form = $row['isi_form'];
+
+    if ($isi_form == 1) {
+        header("location:mahasiswa.php");
+    }
 
 $nama = $nim_asal = $prodi_asal = $fakultas_asal = $alamat = $kota = $nohp = $smt_pindah = $thn_akademik_pindah = $prodi_tujuan = $fakultas_tujuan = "";
 
@@ -110,7 +120,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     if (empty($nama_err) && empty($nim_asal_err) && empty($prodi_asal_err) && empty($fakultas_asal_err) && empty($alamat_err) && empty($kota_err) && empty($nohp_err) && empty($smt_pindah_err) && empty($thn_akademik_pindah_err) && empty($prodi_tujuan_err) && empty($fakultas_tujuan_err)){
 
-        $sql = "INSERT INTO data_mhs (nama, nim_asal, prodi_asal, fakultas_asal, alamat, kota, nohp, smt_pindah, thn_akademik_pindah, prodi_tujuan, fakultas_tujuan, user_id, isi_form) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, '$id', 1)";
+        $sql = "INSERT INTO data_mhs (nama, nim_asal, prodi_asal, fakultas_asal, alamat, kota, nohp, smt_pindah, thn_akademik_pindah, prodi_tujuan, fakultas_tujuan, user_id, isi_form, cek_form) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, '$id', 1, 1)";
 
         if($stmt = $connect->prepare($sql)){ 
             // Bind variables to the prepared statement as parameters 

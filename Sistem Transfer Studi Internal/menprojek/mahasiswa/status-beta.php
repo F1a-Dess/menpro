@@ -209,7 +209,7 @@ $id = $row['id'];
 				</div>
 			</div>
 			<div>
-				<button type="button" class="btn btn-info"><a href="mahasiswa.php">Kalendar Akademik</a></button>
+				<button type="button" class="btn btn-info"><a href="assets/uploads/<?php echo"$id" ?>/MODUL IV.pdf">Kalendar Akademik</a></button>
 			</div>
 		</div>
 	</div>

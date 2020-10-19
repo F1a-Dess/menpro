@@ -37,8 +37,14 @@ if($row=mysqli_fetch_array($sql)) {
 		// buat session login dan email
 		$_SESSION['email'] = $email;
 		$_SESSION['level'] = "kaprodi";
-		// alihkan ke halaman dashboard kasir
-		header("location:../kaprodi/kaprodi_test.php");
+		// alihkan ke halaman dashboard kaprodi
+		header("location:../kaprodi/kaprodi.php");
+	}else if($row['level']=="bak"){
+		// buat session login dan email
+		$_SESSION['email'] = $email;
+		$_SESSION['level'] = "bak";
+		// alihkan ke halaman dashboard bak
+		header("location:../bak/kaprodi.php");
 	}
 	//header("location: accgranted.php"); 
     exit();
@@ -47,6 +53,4 @@ if($row=mysqli_fetch_array($sql)) {
 	if($num_rows==1) echo "Login sukses"; 
 } else echo "Gagal Login<br/>"; 
 	header("location:../index.php");
-
-
 ?>

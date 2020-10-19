@@ -11,6 +11,24 @@ session_start();
         header("location:../login/accdenied.php");
     } 
 
+    $link = mysqli_connect("localhost","root","","transfer_mhs_intern");
+    $email = $_SESSION['email'];
+
+    $sql3 = "SELECT * FROM user WHERE email = '".$email."'";
+    $result3 = $link->query($sql3);
+    $row = $result3->fetch_array();
+    $id = $row['id'];
+    
+
+    $sql = "SELECT * FROM data_mhs WHERE user_id = '".$id."'";
+    $result = $link->query($sql);
+    $row = $result->fetch_array();
+    $upload_berkas = $row['upload_berkas'];
+
+    if ($upload_berkas == 1) {
+        header("location:mahasiswa.php");
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -13,10 +13,6 @@ if($_SESSION['level']!="mahasiswa")
 
 $link = mysqli_connect("localhost","root","","transfer_mhs_intern");
 $email = $_SESSION['email'];
-$sql = "SELECT * FROM user WHERE email = '".$email."'";
-$result = $link->query($sql);
-$row = $result->fetch_array();
-$status = $row['status'];
 
 $sql2 = "SELECT * FROM user WHERE email = '".$email."'";
 $result2 = $link->query($sql2);
