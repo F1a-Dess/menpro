@@ -126,73 +126,54 @@ $id = $row['id'];
               </div>
 
               <div class="column right" style="background-color:white;">
-                <h1 class="pull-left">&emsp;Home</h1>
-                <div align="center">
-                  <div class="page-header clearfix"> 
+                <h1 class="pull-left">&emsp;BAK</h1>
+                <div class="page-header clearfix"> 
                     <br>
                     <br>
                     <h3 class="pull-left">&emsp;&emsp;List Permohonan</h3> 
                   </div>
                   <?php 
                     // Include config file 
-                  require_once '../config/koneksi.php'; 
-                  
+                    require_once '../config/koneksi.php'; 
+                     
                     // Attempt select query execution 
-                  $sql = "SELECT * FROM data_mhs WHERE isi_form = 1 and cek_form = 0 && 1"; 
-                  if($result = $connect->query($sql)){ 
-                    if($result->num_rows > 0){ 
-                      echo "<table class='table table-bordered table-striped'>"; 
-                      echo "<thead>"; 
-                      echo "<tr>"; 
-                      echo "<th>Nama</th>";
-                      echo "<th>Dokumen</th>";
-                      echo "<th>Aksi</th>"; 
-                      echo "</tr>"; 
-                      echo "</thead>"; 
-                      echo "<tbody>"; 
-                      while($row = $result->fetch_array()){ 
-                        echo "<tr>"; 
-                        echo "<td>" . $row['nama'] . "</td>";
-
-                        echo "<td>";
-                        echo "<a href='form.php?id=". $row['user_id'] ."' title='Form' datatoggle='tooltip'><span class='btn btn-primary'> Form</span></a>"; 
-
-
-                        echo "&emsp;";
-                        echo "<a href='rekomendasi.php?id=". $row['user_id'] ."' title='Rekomendasi' datatoggle='tooltip'><span class='btn btn-primary'> Rekomendasi</span></a>"; 
-
-
-                        echo "&emsp;";
-                        echo "<a href='transkrip.php?id=". $row['user_id'] ."' title='transkrip' datatoggle='tooltip'><span class='btn btn-primary'> Transkrip</span></a>"; 
-
-
-                        echo "&emsp;";
-                        echo "<a href='pernyataan.php?id=". $row['user_id'] ."' title='pernyataan' datatoggle='tooltip'><span class='btn btn-primary'> Surat Pernyataan Orang Tua</span></a>";  
-                        echo "</td>";
-
-                        echo "<td>";  
-                        echo "<a href='lengkap.php?id=". $row['user_id'] ."' title='Lengkap' datatoggle='tooltip'><span class='btn btn-success'> Lengkap</span></a>"; 
-
-                        echo "&emsp;";
-
-                        echo "<a href='kurang.php?id=". $row['user_id'] ."' title='Kurang' datatoggle='tooltip'><span class='btn btn-danger'> Kurang</span></a>"; 
-                        echo "</td>"; 
-                        echo "</tr>"; 
-                      } 
-                      echo "</tbody>";                             
-                      echo "</table>"; 
+                    $sql = "SELECT * FROM data_mhs WHERE kep_BAA = 0"; 
+                    if($result = $connect->query($sql)){ 
+                        if($result->num_rows > 0){ 
+                            echo "<table class='table table-bordered table-striped'>"; 
+                                echo "<thead>"; 
+                                    echo "<tr>"; 
+                                        echo "<th>Nama</th>";
+                                        echo "<th>Keterangan</th>";
+                                        echo "<th>Aksi</th>"; 
+                                    echo "</tr>"; 
+                                echo "</thead>"; 
+                                echo "<tbody>"; 
+                                while($row = $result->fetch_array()){ 
+                                    echo "<tr>"; 
+                                        echo "<td>" . $row['nama'] . "</td>";
+                                        echo "<td> Diterima </td>";
+                                        echo "<td>";  
+                                            echo "<a href='baa.php?id=". $row['user_id'] ."' title='BAK' datatoggle='tooltip'><span class='btn btn-success'> BAK</span></a>"; 
+                                            echo "&emsp;";
+                                            // echo "<a href='baa.php?id=". $row['user_id'] ."' title='Tolak' datatoggle='tooltip'><span class='btn btn-danger'> Tolak</span></a>"; 
+                                        echo "</td>"; 
+                                    echo "</tr>"; 
+                                } 
+                                echo "</tbody>";                             
+                            echo "</table>"; 
                             // Free result set 
-                      $result->free(); 
+                            $result->free(); 
+                        } else{ 
+                            echo "<p class='lead'><em>No records were found.</em></p>"; 
+                        } 
                     } else{ 
-                      echo "<p class='lead'><em>No records were found.</em></p>"; 
+                        echo "ERROR: Could not able to execute $sql. " . $connect->error; 
                     } 
-                  } else{ 
-                    echo "ERROR: Could not able to execute $sql. " . $connect->error; 
-                  } 
-                  
+                     
                     // Close connection 
-                  $connect->close(); 
-                  ?> 
+                    $connect->close(); 
+                    ?> 
                   
                 </div>
               </div>

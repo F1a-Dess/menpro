@@ -60,7 +60,7 @@ $uploadpernyataanSukses = move_uploaded_file(
 
 if ($uploadtranskripSukses && $uploadrekomendasiSukses && $uploadpernyataanSukses) {
     $link = mysqli_connect("localhost","root","","transfer_mhs_intern");
-    $sql = "UPDATE data_mhs SET transkrip = '$transkrip', rekomendasi_dosen = '$rekomendasi', pernyataan_ortu = '$pernyataan', upload_berkas = 1, cek_form = 1 WHERE user_id = '".$id."'";
+    $sql = "UPDATE data_mhs SET transkrip = '$transkrip', rekomendasi_dosen = '$rekomendasi', pernyataan_ortu = '$pernyataan', upload_berkas = '1' WHERE user_id = '".$id."'";
     if($result = $link->query($sql)){
       header("location: mahasiswa.php");
     }else{

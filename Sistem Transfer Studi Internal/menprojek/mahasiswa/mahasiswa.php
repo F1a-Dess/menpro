@@ -121,13 +121,14 @@ $id = $row['id'];
 
 						<a href="status.php" id="status" class="	glyphicon glyphicon-bell"> Status</a>
 
-						<a href="#" id="page" class="glyphicon glyphicon-envelope"> BAA</a>
+						<!-- <a href="#" id="page" class="glyphicon glyphicon-envelope"> BAA</a> -->
 
 						<a href="../login/logout.php" id="logout" class="	glyphicon glyphicon-log-out"> Logout</a>
 					</div>
 				</div>
 
 				<div class="column right" style="background-color:white;">
+					<h1 class="pull-left">&emsp;Selamat Datang, <?php echo "$nama"; ?></h1>
 					<div align="center">
 							<embed type="application/pdf" src="../files/PROSEDUR TRANSFER INTERNAL.pdf" width="1140" height="640"></embed>
 					</div>

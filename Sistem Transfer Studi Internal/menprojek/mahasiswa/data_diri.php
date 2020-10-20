@@ -26,7 +26,7 @@ session_start();
     $isi_form = $row['isi_form'];
 
     if ($isi_form == 1) {
-        header("location:mahasiswa.php");
+        header("location:read.php");
     }
 
 $nama = $nim_asal = $prodi_asal = $fakultas_asal = $alamat = $kota = $nohp = $smt_pindah = $thn_akademik_pindah = $prodi_tujuan = $fakultas_tujuan = "";

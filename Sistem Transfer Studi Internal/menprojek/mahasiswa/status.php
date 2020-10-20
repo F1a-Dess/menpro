@@ -91,7 +91,7 @@ $id = $row['id'];
 
 		<a href="status.php" id="status" class="active glyphicon glyphicon-bell"> Status</a>
 
-		<a href="#" id="page" class="glyphicon glyphicon-envelope"> BAA</a>
+		<!-- <a href="#" id="page" class="glyphicon glyphicon-envelope"> BAA</a> -->
 
 		<a href="../login/logout.php" id="logout" class="	glyphicon glyphicon-log-out"> Logout</a>
 	</div>

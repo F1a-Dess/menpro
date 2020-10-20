@@ -29,7 +29,7 @@ $id = $row['id'];
 <head>
   <meta charset="utf-8">
 
-  <title>Kaprodi</title>
+  <title>BAA</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -126,7 +126,7 @@ $id = $row['id'];
               </div>
 
               <div class="column right" style="background-color:white;">
-                <h1 class="pull-left">&emsp;Kaprodi</h1>
+                <h1 class="pull-left">&emsp;Keputusan Kaprodi</h1>
                 <div class="page-header clearfix"> 
                     <br>
                     <br>
@@ -156,7 +156,7 @@ $id = $row['id'];
                                         echo "<td>";  
                                             echo "<a href='baa.php?id=". $row['user_id'] ."' title='BAK' datatoggle='tooltip'><span class='btn btn-success'> BAK</span></a>"; 
                                             echo "&emsp;";
-                                            echo "<a href='baa.php?id=". $row['user_id'] ."' title='Tolak' datatoggle='tooltip'><span class='btn btn-danger'> Tolak</span></a>"; 
+                                            // echo "<a href='baa.php?id=". $row['user_id'] ."' title='Tolak' datatoggle='tooltip'><span class='btn btn-danger'> Tolak</span></a>"; 
                                         echo "</td>"; 
                                     echo "</tr>"; 
                                 } 

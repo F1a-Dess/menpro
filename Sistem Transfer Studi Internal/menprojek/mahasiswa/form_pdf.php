@@ -26,7 +26,7 @@ session_start();
     $upload_berkas = $row['upload_berkas'];
 
     if ($upload_berkas == 1) {
-        header("location:mahasiswa.php");
+        header("location:read_berkas.php");
     }
 
 ?>
