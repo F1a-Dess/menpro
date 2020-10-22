@@ -19,7 +19,7 @@ $result3 = $link->query($sql3);
 $row = $result3->fetch_array();
 $id = $row['id'];
 
-$folderUpload = "./assets/uploads/$id";
+$folderUpload = "./assets/uploads/$id/";
 
 # periksa apakah folder tersedia
 if (!is_dir($folderUpload)) {
@@ -33,9 +33,9 @@ $filetranskrip = (object) @$_FILES['transkrip'];
 $filerekomendasi = (object) @$_FILES['rekomendasi'];
 $filepernyataan = (object) @$_FILES['pernyataan'];
 
-$transkrip = $_FILES['transkrip']['name'];
-$pernyataan = $_FILES['pernyataan']['name'];
-$rekomendasi = $_FILES['rekomendasi']['name'];
+$transkrip = date('dmYHis').str_replace(" ", "", basename($_FILES["transkrip"]["name"]));
+$pernyataan = date('dmYHis').str_replace(" ", "", basename($_FILES["pernyataan"]["name"]));
+$rekomendasi = date('dmYHis').str_replace(" ", "", basename($_FILES["rekomendasi"]["name"]));
 
 if ($filetranskrip->size > 1000 * 2000 && $filerekomendasi->size > 1000 * 2000 && $filepernyataan->size > 1000 * 2000) {
     die("File tidak boleh lebih dari 1MB");
@@ -47,16 +47,13 @@ if ($filerekomendasi->type !== 'application/pdf' && $filetranskrip->type !== 'ap
 
 # mulai upload file
 $uploadtranskripSukses = move_uploaded_file(
-    $filetranskrip->tmp_name, "{$folderUpload}/{$filetranskrip->name}"
-);
+    $_FILES["transkrip"]["tmp_name"], "{$folderUpload}" . $transkrip);
 
 $uploadrekomendasiSukses = move_uploaded_file(
-    $filerekomendasi->tmp_name, "{$folderUpload}/{$filerekomendasi->name}"
-);
+    $_FILES["rekomendasi"]["tmp_name"], "{$folderUpload}" . $rekomendasi);
 
 $uploadpernyataanSukses = move_uploaded_file(
-    $filepernyataan->tmp_name, "{$folderUpload}/{$filepernyataan->name}"
-);
+    $_FILES["pernyataan"]["tmp_name"], "{$folderUpload}" . $pernyataan);
 
 if ($uploadtranskripSukses && $uploadrekomendasiSukses && $uploadpernyataanSukses) {
     $link = mysqli_connect("localhost","root","","transfer_mhs_intern");

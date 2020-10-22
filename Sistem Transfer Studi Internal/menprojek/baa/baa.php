@@ -138,7 +138,7 @@ $id = $row['id'];
                   require_once '../config/koneksi.php'; 
                   
                     // Attempt select query execution 
-                  $sql = "SELECT * FROM data_mhs WHERE isi_form = 1"; 
+                  $sql = "SELECT * FROM data_mhs WHERE isi_form = 1 and cek_form != 2"; 
                   if($result = $connect->query($sql)){ 
                     if($result->num_rows > 0){ 
                       echo "<table class='table table-bordered table-striped'>"; 

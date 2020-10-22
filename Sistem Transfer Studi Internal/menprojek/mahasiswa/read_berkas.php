@@ -19,6 +19,13 @@ $result3 = $link->query($sql3);
 $row = $result3->fetch_array();
 $id = $row['id'];
 
+$sql4 = "SELECT * FROM data_mhs WHERE user_id = '".$id."'";
+$result4 = $link->query($sql4);
+$row = $result4->fetch_array();
+$transkrip = $row['transkrip'];
+
+
+
 
 $sql = "SELECT * FROM data_mhs WHERE user_id = '".$id."'";
 $result = $link->query($sql);
@@ -96,16 +103,16 @@ if ($isi_form == 0) {
                         <h1>View Record</h1> 
                     </div> 
                     <div class="form-group">
-                    <label>Transkrip</label>
-                    <p class="form-control-static"><?php echo $row["transkrip"]; ?></p>
+                    <label>Transkrip</label><br>
+                    <a class="form-control-static" href="assets/uploads/<?php echo"$id" ?>/<?php echo"$transkrip" ?>"><?php echo $row["transkrip"]; ?></a>
                     </div>
                     <div class="form-group">
-                    <label>Surat Rekomendasi</label>
-                    <p class="form-control-static"><?php echo $row["rekomendasi_dosen"]; ?></p>
+                    <label>Surat Rekomendasi</label><br>
+                    <a class="form-control-static" href="assets/uploads/<?php echo"$id" ?>/<?php echo"$rekomendasi_dosen" ?>"><?php echo $row["rekomendasi_dosen"]; ?></a>
                     </div>
                     <div class="form-group">
-                    <label>Pernyataan Ortu</label>
-                    <p class="form-control-static"><?php echo $row["pernyataan_ortu"]; ?></p>
+                    <label>Pernyataan Ortu</label><br>
+                    <a class="form-control-static" href="assets/uploads/<?php echo"$id" ?>/<?php echo"$pernyataan_ortu" ?>"><?php echo $row["pernyataan_ortu"]; ?></a>
                     </div>
                     <p><a href="mahasiswa.php" class="btn btn-primary">Ke Awal</a></p>
                         </div> 
