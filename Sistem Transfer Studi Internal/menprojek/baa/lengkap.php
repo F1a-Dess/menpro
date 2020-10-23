@@ -16,7 +16,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
     require_once '../config/koneksi.php'; 
     
     // Prepare a select statement 
-    $sql = "UPDATE data_mhs SET cek_form = 2 WHERE id = ?"; 
+    $sql = "UPDATE data_mhs SET cek_form = 2 WHERE user_id = ?"; 
     
     if($stmt = $connect->prepare($sql)){ 
         // Bind variable 

@@ -24,13 +24,6 @@ $result3 = $link->query($sql3);
 $row = $result3->fetch_array();
 $id = $row['id'];
 
-$sql3 = "SELECT * FROM data_mhs WHERE kep_kaprodi != 0";
-$result3 = $link->query($sql3);
-$row = $result3->fetch_array();
-$kep_kaprodi = $row['kep_kaprodi'];
-if ($kep_kaprodi == 1) {
-  $keputusan = "Diterima";
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -138,7 +131,7 @@ if ($kep_kaprodi == 1) {
                 <div class="page-header clearfix"> 
                   <br>
                   <br>
-                  <h3 class="pull-left">&emsp;&emsp;List Permohonan</h3> 
+                  <h3 class="pull-left">&emsp;&emsp;List Permohonan Diterima</h3> 
                 </div>
                 <?php 
                     // Include config file 
@@ -152,7 +145,6 @@ if ($kep_kaprodi == 1) {
                     echo "<thead>"; 
                     echo "<tr>"; 
                     echo "<th>Nama</th>";
-                    echo "<th>Keterangan</th>";
                     echo "<th>Berkas</th>";
                     echo "<th>Aksi</th>"; 
                     echo "</tr>"; 
@@ -161,7 +153,9 @@ if ($kep_kaprodi == 1) {
                     while($row = $result->fetch_array()){ 
                       echo "<tr>"; 
                       echo "<td>" . $row['nama'] . "</td>";
-                      echo "<td>" . $keputusan . "</td>";
+                      echo "<td>";
+                      echo "hai";
+                      echo "</td>";
                       echo "<td>";  
                       echo "<a href='baa.php?id=". $row['user_id'] ."' title='BAK' datatoggle='tooltip'><span class='btn btn-success'> BAK</span></a>"; 
                       echo "&emsp;";
