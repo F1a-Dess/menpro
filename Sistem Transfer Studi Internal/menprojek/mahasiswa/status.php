@@ -24,6 +24,11 @@ $result3 = $link->query($sql3);
 $row = $result3->fetch_array();
 $id = $row['id'];
 
+$sql3 = "SELECT * FROM data_mhs WHERE user_id = '".$id."'";
+$result3 = $link->query($sql3);
+$row = $result3->fetch_array();
+$keputusan = $row['keputusan'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -176,9 +181,9 @@ $id = $row['id'];
 									if ($kep_baa == 0) {
 										echo '<id="status" class="fa fa-hourglass-half"> Menunggu</id="status">';
 									} elseif ($kep_baa == 1) {
-										echo '<id="status" class="fa fa-check-square fa fa-clock-o"> Diterima';
+										echo '<id="status" class="fa fa-check-square fa fa-clock-o">Diterima';
 									} else{
-										echo '<id="status" class="fa fa-times"> Ditolak';
+										echo '<a href="../baa/assets/uploads/'.$id.'/'.$keputusan.'" class="btn btn-danger"><id="status" class="fa fa-times">  Ditolak</a>';
 									}
 									?>
 								</td>
@@ -259,12 +264,24 @@ $id = $row['id'];
 										echo '<id="status" class="fa fa-hourglass-half"> Menunggu</id="status">';
 									} elseif ($selesai == 1) {
 										echo '<id="status" class="fa fa-check-square fa fa-clock-o"> Selamat';
+									} elseif ($selesai == 2) {
+										echo 'Maaf Permintaan Anda ditolak. ';
 									}
 									?>
 								</td>
 							</tr>
 						</tbody>
 					</table>
+					<?php 
+					$link = mysqli_connect("localhost","root","","transfer_mhs_intern");
+					$sql = "SELECT * FROM data_mhs WHERE user_id = '".$id."'";
+					$result = $link->query($sql);
+					$row = $result->fetch_array();
+					$selesai = $row['selesai'];
+					if ($selesai == 2) {
+						echo 'Silahkan klik tombol "Ditolak" untuk mengunduh surat pemberitahuan.';
+					}
+					?>
 				</div>
 			</div>
 		</div> 

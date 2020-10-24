@@ -118,7 +118,9 @@ $id = $row['id'];
 
                   <a href="baa.php" id="home" class="active glyphicon glyphicon-home"> Home</a>
 
-                  <a href="kaprodi.php" id="kaprodi" class="active glyphicon glyphicon-user"> Kaprodi</a>
+                  <a href="kaprodi_diterima.php" id="kaprodi_diterima" class="active glyphicon glyphicon-ok"> Diterima</a>
+
+                  <a href="kaprodi_ditolak.php" id="kaprodi_ditolak" class="active glyphicon glyphicon-remove"> Ditolak</a>
 
                   <a href="bak.php" id="bak" class="active glyphicon glyphicon-usd"> BAK</a>
                   
@@ -138,7 +140,7 @@ $id = $row['id'];
                 require_once '../config/koneksi.php'; 
 
                     // Attempt select query execution 
-                $sql = "SELECT * FROM data_mhs WHERE kep_kaprodi != 0"; 
+                $sql = "SELECT * FROM data_mhs WHERE kep_kaprodi = 1 and kep_baa = 0"; 
                 if($result = $connect->query($sql)){ 
                   if($result->num_rows > 0){ 
                     echo "<table class='table table-bordered table-striped'>"; 
@@ -154,12 +156,10 @@ $id = $row['id'];
                       echo "<tr>"; 
                       echo "<td>" . $row['nama'] . "</td>";
                       echo "<td>";
-                      echo "hai";
+                      echo "<a href='konversi.php?id=". $row['user_id'] ."' title='Konversi' datatoggle='tooltip'><span class='btn btn-success'> Konversi</span></a>";
                       echo "</td>";
                       echo "<td>";  
-                      echo "<a href='baa.php?id=". $row['user_id'] ."' title='BAK' datatoggle='tooltip'><span class='btn btn-success'> BAK</span></a>"; 
-                      echo "&emsp;";
-                                            // echo "<a href='baa.php?id=". $row['user_id'] ."' title='Tolak' datatoggle='tooltip'><span class='btn btn-danger'> Tolak</span></a>"; 
+                      echo "<a href='lanjutke_bak.php?id=". $row['user_id'] ."' title='BAK' datatoggle='tooltip'><span class='btn btn-success'> Lanjut ke BAK</span></a>"; 
                       echo "</td>"; 
                       echo "</tr>"; 
                     } 

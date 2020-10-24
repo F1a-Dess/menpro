@@ -117,7 +117,9 @@ $id = $row['id'];
 
                   <a href="baa.php" id="home" class="active glyphicon glyphicon-home"> Home</a>
 
-                  <a href="kaprodi.php" id="kaprodi" class="active glyphicon glyphicon-user"> Kaprodi</a>
+                  <a href="kaprodi_diterima.php" id="kaprodi_diterima" class="active glyphicon glyphicon-ok"> Diterima</a>
+
+                  <a href="kaprodi_ditolak.php" id="kaprodi_ditolak" class="active glyphicon glyphicon-remove"> Ditolak</a>
 
                   <a href="bak.php" id="bak" class="active glyphicon glyphicon-usd"> BAK</a>
                   
