@@ -44,7 +44,7 @@ if($row=mysqli_fetch_array($sql)) {
 		$_SESSION['email'] = $email;
 		$_SESSION['level'] = "bak";
 		// alihkan ke halaman dashboard bak
-		header("location:../bak/kaprodi.php");
+		header("location:../bak/bak.php");
 	}
 	//header("location: accgranted.php"); 
     exit();

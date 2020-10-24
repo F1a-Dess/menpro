@@ -6,11 +6,11 @@ if($_SESSION['email']=="")
 {
   header("location:../login/accdenied.php");
 }
-if($_SESSION['level']!="baa")
+if($_SESSION['level']!="bak")
 {
   header("location:../login/accdenied.php");
 }  
-$update = date("Y-m-d H:i:s");
+
 $link = mysqli_connect("localhost","root","","transfer_mhs_intern");
 $email = $_SESSION['email'];
 
@@ -29,7 +29,7 @@ $id = $row['id'];
 <head>
   <meta charset="utf-8">
 
-  <title>BAA</title>
+  <title>BAK</title>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -115,14 +115,10 @@ $id = $row['id'];
                 <div class="sidenav">
                   <a class="sidenav-brand"> <img src="../pictures/logo.png" width="150px" height="80px"> </a>
 
-                  <a href="baa.php" id="home" class="active glyphicon glyphicon-home"> Home</a>
+                  <a href="bak.php" id="home" class="active glyphicon glyphicon-home"> Home</a>
 
-                  <a href="kaprodi_diterima.php" id="kaprodi_diterima" class="active glyphicon glyphicon-ok"> Diterima</a>
+                  <a href="bak_acc.php" id="bak_acc" class="active glyphicon glyphicon-ok"> Sudah</a>
 
-                  <a href="kaprodi_ditolak.php" id="kaprodi_ditolak" class="active glyphicon glyphicon-remove"> Ditolak</a>
-
-                  <a href="bak.php" id="bak" class="active glyphicon glyphicon-usd"> BAK</a>
-                  
                   <a href="../login/logout.php" id="logout" class=" glyphicon glyphicon-log-out"> Logout</a>
                 </div>
               </div>
@@ -139,14 +135,14 @@ $id = $row['id'];
                 require_once '../config/koneksi.php'; 
 
                     // Attempt select query execution 
-                $sql = "SELECT * FROM data_mhs WHERE biaya_studi != 0"; 
+                $sql = "SELECT * FROM data_mhs WHERE biaya_studi = 1"; 
                 if($result = $connect->query($sql)){ 
                   if($result->num_rows > 0){ 
                     echo "<table class='table table-bordered table-striped'>"; 
                     echo "<thead>"; 
                     echo "<tr>"; 
                     echo "<th>Nama</th>";
-                    echo "<th>Biaya Studi</th>";
+                    echo "<th>Konversi Nilai</th>";
                     echo "<th>Aksi</th>"; 
                     echo "</tr>"; 
                     echo "</thead>"; 
@@ -155,10 +151,10 @@ $id = $row['id'];
                       echo "<tr>"; 
                       echo "<td>" . $row['nama'] . "</td>";
                       echo "<td>";
-                      echo "<a href='biaya_studi.php?id=". $row['user_id'] ."' title='Biaya Studi' datatoggle='tooltip'><span class='btn btn-primary'> Biaya Studi</span></a>";
+                      echo "<a href='konversi.php?id=". $row['user_id'] ."' title='Konversi Nilai' datatoggle='tooltip'><span class='btn btn-primary'> Konversi Nilai</span></a>";
                       echo "</td>";
                       echo "<td>";  
-                      echo "<a href='kirim.php?id=". $row['user_id'] ."' title='Kirim' datatoggle='tooltip'><span class='btn btn-success'> Kirim</span></a>"; 
+                      echo "<a href='edit_biaya.php?id=". $row['user_id'] ."' title='Edit' datatoggle='tooltip'><span class='btn btn-success'> Edit</span></a>"; 
                       echo "</td>"; 
                       echo "</tr>"; 
                     } 

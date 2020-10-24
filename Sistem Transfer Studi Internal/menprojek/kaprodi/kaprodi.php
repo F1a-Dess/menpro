@@ -23,6 +23,11 @@ $sql3 = "SELECT * FROM user WHERE email = '".$email."'";
 $result3 = $link->query($sql3);
 $row = $result3->fetch_array();
 $id = $row['id'];
+
+$sql3 = "SELECT * FROM user WHERE email = '".$email."'";
+$result3 = $link->query($sql3);
+$row = $result3->fetch_array();
+$prodi = $row['prodi'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -135,7 +140,7 @@ $id = $row['id'];
 									require_once '../config/koneksi.php'; 
 
                     // Attempt select query execution 
-									$sql = "SELECT * FROM data_mhs"; 
+									$sql = "SELECT * FROM data_mhs WHERE prodi_tujuan = '$prodi'"; 
 									if($result = $connect->query($sql)){ 
 										if($result->num_rows > 0){ 
 											echo "<table class='table table-bordered table-striped'>"; 
