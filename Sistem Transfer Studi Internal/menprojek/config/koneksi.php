@@ -1,5 +1,5 @@
 <?php
-$host = "localhost"; // Nama hostnya
+$host = "group05@localhost"; // Nama hostnya
 $username = "group05"; // Username
 $password = "05osan"; // Password (Isi jika menggunakan password)
 $database = "group05"; // Nama databasenya
