@@ -116,9 +116,13 @@ $id = $row['id'];
                 <div class="sidenav">
                   <a class="sidenav-brand"> <img src="../pictures/logo.png" width="150px" height="80px"> </a>
 
-                  <a href="bak.php" id="home" class="active glyphicon glyphicon-home"> Home</a>
+                  <a href="bak.php" id="home" class="active glyphicon glyphicon-time"> Inbox</a>
 
-                  <a href="bak_acc.php" id="bak_acc" class="active glyphicon glyphicon-ok"> Sudah</a>
+                  <hr>
+
+                  <a href="bak_acc.php" id="bak_acc" class="active glyphicon glyphicon-ok"> Teririm</a>
+
+                  <a href="bak_bayar.php" id="bak_bayar" class="active glyphicon glyphicon-usd"> Pembayaran</a>
 
                   <a href="../login/logout.php" id="logout" class=" glyphicon glyphicon-log-out"> Logout</a>
                 </div>

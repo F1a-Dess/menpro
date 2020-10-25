@@ -115,11 +115,15 @@ $id = $row['id'];
                 <div class="sidenav">
                   <a class="sidenav-brand"> <img src="../pictures/logo.png" width="150px" height="80px"> </a>
 
-                  <a href="baa.php" id="home" class="active glyphicon glyphicon-home"> Home</a>
+                  <a href="baa.php" id="inbox" class="active glyphicon glyphicon-inbox"> Checking</a>
+
+                  <hr>
 
                   <a href="kaprodi_diterima.php" id="kaprodi_diterima" class="active glyphicon glyphicon-ok"> Diterima</a>
 
                   <a href="kaprodi_ditolak.php" id="kaprodi_ditolak" class="active glyphicon glyphicon-remove"> Ditolak</a>
+
+                  <hr>
 
                   <a href="bak.php" id="bak" class="active glyphicon glyphicon-usd"> BAK</a>
                   
@@ -128,7 +132,7 @@ $id = $row['id'];
               </div>
 
               <div class="column right" style="background-color:white;">
-                <h1 class="pull-left">&emsp;Home</h1>
+                <h1 class="pull-left">&emsp;Cek Kelengkapan dan Validitas Data</h1>
                 <div align="center">
                   <div class="page-header clearfix"> 
                     <br>

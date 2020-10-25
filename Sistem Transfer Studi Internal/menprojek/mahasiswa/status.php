@@ -199,11 +199,13 @@ $keputusan = $row['keputusan'];
 									$sql = "SELECT * FROM data_mhs WHERE user_id = '".$id."'";
 									$result = $link->query($sql);
 									$row = $result->fetch_array();
-									$biaya_studi = $row['biaya_studi'];
+									$biaya_studi = $row['kirim_biaya_studi'];
 									if ($biaya_studi == 0) {
 										echo '<id="status" class="fa fa-hourglass-half"> Menunggu</id="status">';
 									} elseif ($biaya_studi == 1) {
-										echo "<a href='biaya_studi.php?id=". $row['id'] ."' title='Cek Biaya Studi' datatoggle='tooltip'><span class='btn btn-primary'> Cek Biaya Studi</span></a>";
+										echo "<a href='biaya_studi.php?id=". $row['id'] ."' title='Biaya Studi' datatoggle='tooltip'><span class='btn btn-primary'>   Biaya Studi</span></a>
+										
+										<a href='pemberitahuan.php?id=". $row['id'] ."' title='Pemberitahuan Diterima' datatoggle='tooltip'><span class='btn btn-primary'>   Pemberitahuan Diterima</span></a>";
 									}
 									?>
 								</td>
@@ -224,6 +226,12 @@ $keputusan = $row['keputusan'];
 										echo '<id="status" class="fa fa-hourglass-half"> Menunggu</id="status">';
 									} elseif ($bayar == 1) {
 										echo "<a href='upload_bukti_bayar.php?id=". $row['id'] ."' title='Upload Bukti Bayar' datatoggle='tooltip'><span class='btn btn-primary'> Upload Bukti Bayar</span></a>";
+									} elseif ($bayar == 2) {
+										echo '<id="status" class="fa fa-check-square fa fa-clock-o">Success';
+									} elseif ($bayar == 3) {
+										echo "<a href='upload_bukti_bayar.php?id=". $row['id'] ."' title='Upload Ulang Bukti Bayar' datatoggle='tooltip'><span class='btn btn-warning' style='color: black;'> Upload Ulang Bukti Bayar</span></a>";
+									} elseif ($bayar == 4) {
+										echo  '<id="status" class="fa fa-hourglass-half"> Diproses</id="status">';
 									}
 									?>
 								</td>
@@ -242,7 +250,7 @@ $keputusan = $row['keputusan'];
 									$nim_baru = $row['nim_baru'];
 									if ($nim_baru == 0) {
 										echo '<id="status" class="fa fa-hourglass-half"> Menunggu</id="status">';
-									} elseif ($nim_baru == 1) {
+									} else {
 										echo "<a href='nim_baru.php?id=". $row['id'] ."' title='NIM Baru' datatoggle='tooltip'><span class='btn btn-primary'> NIM Baru</span></a>";
 									}
 									?>

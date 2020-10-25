@@ -76,7 +76,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
                         <p>Apakah anda yakin akan menolak permohonan pindah ini?</p><br> 
                         <p> 
                             <input type="submit" value="Yes" class="btn btn-danger"> 
-                            <a href="baa.php" class="btn btn-default">No</a> 
+                            <a href="kaprodi.php" class="btn btn-default">No</a> 
                         </p> 
                     </div> 
                 </form> 

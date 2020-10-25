@@ -115,11 +115,15 @@ $id = $row['id'];
                 <div class="sidenav">
                   <a class="sidenav-brand"> <img src="../pictures/logo.png" width="150px" height="80px"> </a>
 
-                  <a href="baa.php" id="home" class="active glyphicon glyphicon-home"> Home</a>
+                  <a href="baa.php" id="inbox" class="active glyphicon glyphicon-inbox"> Checking</a>
+
+                  <hr>
 
                   <a href="kaprodi_diterima.php" id="kaprodi_diterima" class="active glyphicon glyphicon-ok"> Diterima</a>
 
                   <a href="kaprodi_ditolak.php" id="kaprodi_ditolak" class="active glyphicon glyphicon-remove"> Ditolak</a>
+
+                  <hr>
 
                   <a href="bak.php" id="bak" class="active glyphicon glyphicon-usd"> BAK</a>
                   
@@ -132,14 +136,14 @@ $id = $row['id'];
                 <div class="page-header clearfix"> 
                   <br>
                   <br>
-                  <h3 class="pull-left">&emsp;&emsp;List Permohonan</h3> 
+                  <h3 class="pull-left">&emsp;&emsp;List Biaya Studi Pemohon</h3> 
                 </div>
                 <?php 
                     // Include config file 
                 require_once '../config/koneksi.php'; 
 
                     // Attempt select query execution 
-                $sql = "SELECT * FROM data_mhs WHERE biaya_studi != 0"; 
+                $sql = "SELECT * FROM data_mhs WHERE biaya_studi != 0 and kirim_biaya_studi = 0"; 
                 if($result = $connect->query($sql)){ 
                   if($result->num_rows > 0){ 
                     echo "<table class='table table-bordered table-striped'>"; 
@@ -158,7 +162,7 @@ $id = $row['id'];
                       echo "<a href='biaya_studi.php?id=". $row['user_id'] ."' title='Biaya Studi' datatoggle='tooltip'><span class='btn btn-primary'> Biaya Studi</span></a>";
                       echo "</td>";
                       echo "<td>";  
-                      echo "<a href='kirim.php?id=". $row['user_id'] ."' title='Kirim' datatoggle='tooltip'><span class='btn btn-success'> Kirim</span></a>"; 
+                      echo "<a href='kirim.php?id=". $row['user_id'] ."' title='Kirim Pemberitahuan dan Biaya Studi' datatoggle='tooltip'><span class='btn btn-success'> Kirim Pemberitahuan dan Biaya Studi</span></a>"; 
                       echo "</td>"; 
                       echo "</tr>"; 
                     } 

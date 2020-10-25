@@ -27,6 +27,8 @@ session_start();
 
     if ($isi_form == 1) {
         header("location:read.php");
+    }elseif ($isi_form == 3) {
+        header("location:edit_datadiri.php");
     }
 
 $nama = $nim_asal = $prodi_asal = $fakultas_asal = $alamat = $kota = $nohp = $smt_pindah = $thn_akademik_pindah = $prodi_tujuan = $fakultas_tujuan = "";

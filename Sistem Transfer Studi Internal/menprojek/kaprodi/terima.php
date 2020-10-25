@@ -51,12 +51,12 @@ session_start();
     <form action="proses_terima.php" method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label>Biaya Studi</label> <br>
-            <input type="file" name="biaya_studi" required="required" accept=".xls,.xlsx">
+            <input type="file" name="konversi_nilai" required="required" accept=".xls,.xlsx">
             <input type="hidden" name="id" value=<?php echo "$id" ?>/>
         </div>
         <div style="margin-top: 1rem">
             <button class="btn btn-success">Upload</button>
-            <a href="bak.php" class="btn btn-danger">Cancel</a>
+            <a href="kaprodi.php" class="btn btn-danger">Cancel</a>
         </div>
     </form>
 </body>

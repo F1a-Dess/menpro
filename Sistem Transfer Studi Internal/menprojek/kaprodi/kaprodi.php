@@ -144,7 +144,7 @@ $prodi = $row['prodi'];
 									require_once '../config/koneksi.php'; 
 
                     // Attempt select query execution 
-									$sql = "SELECT * FROM data_mhs WHERE prodi_tujuan = '$prodi'"; 
+									$sql = "SELECT * FROM data_mhs WHERE prodi_tujuan = '$prodi' and kep_kaprodi = 0"; 
 									if($result = $connect->query($sql)){ 
 										if($result->num_rows > 0){ 
 											echo "<table class='table table-bordered table-striped'>"; 

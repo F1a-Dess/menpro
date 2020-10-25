@@ -30,7 +30,7 @@ if($_SESSION['level']!="kaprodi")
         die("File tidak boleh lebih dari 1MB");
     }
 
-    if ($filekonversi_nilai->type !== 'application/vnd.ms-excel', 'text/xls', 'text/xlsx','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
+    if ($filekonversi_nilai->type !== 'application/vnd.ms-excel'  && $filekonversi_nilai->type !== 'text/xls' && $filekonversi_nilai->type !== 'text/xlsx' && $filekonversi_nilai->type !== 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet') {
         die("File harus Excel!");
     }
 

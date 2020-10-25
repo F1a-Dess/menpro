@@ -116,11 +116,15 @@ $id = $row['id'];
                 <div class="sidenav">
                   <a class="sidenav-brand"> <img src="../pictures/logo.png" width="150px" height="80px"> </a>
 
-                  <a href="baa.php" id="home" class="active glyphicon glyphicon-home"> Home</a>
+                  <a href="baa.php" id="inbox" class="active glyphicon glyphicon-inbox"> Checking</a>
+
+                  <hr>
 
                   <a href="kaprodi_diterima.php" id="kaprodi_diterima" class="active glyphicon glyphicon-ok"> Diterima</a>
 
                   <a href="kaprodi_ditolak.php" id="kaprodi_ditolak" class="active glyphicon glyphicon-remove"> Ditolak</a>
+
+                  <hr>
 
                   <a href="bak.php" id="bak" class="active glyphicon glyphicon-usd"> BAK</a>
                   
@@ -155,7 +159,7 @@ $id = $row['id'];
                       echo "<tr>"; 
                       echo "<td>" . $row['nama'] . "</td>";
                       echo "<td>";  
-                      echo "<a href='tolak_baa.php?id=". $row['user_id'] ."' title='BAK' datatoggle='tooltip'><span class='btn btn-danger'> Kirim Pemberitahuan</span></a>"; 
+                      echo "<a href='tolak_baa.php?id=". $row['user_id'] ."' title='Kirim Pemberitahuan' datatoggle='tooltip'><span class='btn btn-danger'> Kirim Pemberitahuan</span></a>"; 
                       echo "</td>"; 
                       echo "</tr>"; 
                     } 

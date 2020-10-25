@@ -28,7 +28,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         // execute  
         if($stmt->execute()){ 
             // Records deleted  
-            header("location: baa.php"); 
+            header("location: kaprodi_diterima.php"); 
             exit(); 
         } else{ 
             echo " ada yang salah coba lagi."; 

@@ -115,9 +115,13 @@ $id = $row['id'];
                 <div class="sidenav">
                   <a class="sidenav-brand"> <img src="../pictures/logo.png" width="150px" height="80px"> </a>
 
-                  <a href="bak.php" id="home" class="active glyphicon glyphicon-home"> Home</a>
+                  <a href="bak.php" id="home" class="active glyphicon glyphicon-time"> Inbox</a>
 
-                  <a href="bak_acc.php" id="bak_acc" class="active glyphicon glyphicon-ok"> Sudah</a>
+                  <hr>
+
+                  <a href="bak_acc.php" id="bak_acc" class="active glyphicon glyphicon-ok"> Teririm</a>
+
+                  <a href="bak_bayar.php" id="bak_bayar" class="active glyphicon glyphicon-usd"> Pembayaran</a>
 
                   <a href="../login/logout.php" id="logout" class=" glyphicon glyphicon-log-out"> Logout</a>
                 </div>
@@ -128,7 +132,7 @@ $id = $row['id'];
                 <div class="page-header clearfix"> 
                   <br>
                   <br>
-                  <h3 class="pull-left">&emsp;&emsp;List Permohonan</h3> 
+                  <h3 class="pull-left">&emsp;&emsp;List Biaya Studi Terkirim</h3> 
                 </div>
                 <?php 
                     // Include config file 
@@ -142,7 +146,7 @@ $id = $row['id'];
                     echo "<thead>"; 
                     echo "<tr>"; 
                     echo "<th>Nama</th>";
-                    echo "<th>Konversi Nilai</th>";
+                    echo "<th>Biaya Studi</th>";
                     echo "<th>Aksi</th>"; 
                     echo "</tr>"; 
                     echo "</thead>"; 
@@ -151,7 +155,7 @@ $id = $row['id'];
                       echo "<tr>"; 
                       echo "<td>" . $row['nama'] . "</td>";
                       echo "<td>";
-                      echo "<a href='konversi.php?id=". $row['user_id'] ."' title='Konversi Nilai' datatoggle='tooltip'><span class='btn btn-primary'> Konversi Nilai</span></a>";
+                      echo "<a href='biaya_studi.php?id=". $row['user_id'] ."' title='Biaya Studi' datatoggle='tooltip'><span class='btn btn-primary'> Biaya Studi</span></a>";
                       echo "</td>";
                       echo "<td>";  
                       echo "<a href='edit_biaya.php?id=". $row['user_id'] ."' title='Edit' datatoggle='tooltip'><span class='btn btn-success'> Edit</span></a>"; 
