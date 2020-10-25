@@ -8,7 +8,7 @@ $_SESSION["email"]=$_POST["email"];
 
 
 
-$con=mysqli_connect("localhost", "root", "", "transfer_mhs_intern") or die("cannot connect");
+$con=mysqli_connect("localhost", "group05", "05osan", "group05") or die("cannot connect");
 
 $email=mysqli_real_escape_string($con, $_POST['email']); 
 $password=md5(mysqli_real_escape_string($con, $_POST['password']));
