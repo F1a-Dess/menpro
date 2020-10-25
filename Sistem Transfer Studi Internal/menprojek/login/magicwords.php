@@ -6,14 +6,10 @@ session_start();
 $_SESSION["email"]=$_POST["email"];
 //echo $_SESSION["email"];
 
+$email=mysqli_real_escape_string($connect, $_POST['email']); 
+$password=md5(mysqli_real_escape_string($connect, $_POST['password']));
 
-
-$con=mysqli_connect("localhost", "root", "", "transfer_mhs_intern") or die("cannot connect");
-
-$email=mysqli_real_escape_string($con, $_POST['email']); 
-$password=md5(mysqli_real_escape_string($con, $_POST['password']));
-
-$sql=mysqli_query($con, "SELECT * FROM user where email='".$email."' and password='".$password."'");
+$sql=mysqli_query($connect, "SELECT * FROM user where email='".$email."' and password='".$password."'");
 
 if($row=mysqli_fetch_array($sql)) { 
 	
