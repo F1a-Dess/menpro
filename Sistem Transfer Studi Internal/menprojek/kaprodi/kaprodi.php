@@ -133,7 +133,11 @@ $prodi = $row['prodi'];
 									<div class="page-header clearfix"> 
 										<br>
 										<br>
-										<h3 class="pull-left">&emsp;&emsp;List Permohonan</h3> 
+										<h3 class="pull-left">&emsp;&emsp;List Permohonan</h3>
+									</div>
+									<div class="page-header clearfix">
+										<p>Harap mengupload Formulir Konversi Nilai sesuai contoh dibawah</p>
+										<a href="../files/FORMULIR KONVERSI.xlsx">Template Formulir Konversi</a>
 									</div>
 									<?php 
                     // Include config file 
@@ -157,27 +161,27 @@ $prodi = $row['prodi'];
 												echo "<td>" . $row['nama'] . "</td>";
 
 												echo "<td>";
-												echo "<a href='form.php?id=". $row['user_id'] ."' title='Form' datatoggle='tooltip'><span class='btn btn-primary'> Form</span></a>"; 
+					echo "<a href='form.php?id=". $row['user_id'] ."' title='Form' datatoggle='tooltip'><span class='btn btn-primary'> Form</span></a>"; 
 
 
 												echo "&emsp;&emsp;&emsp;";
-												echo "<a href='rekomendasi.php?id=". $row['user_id'] ."' title='Rekomendasi' datatoggle='tooltip'><span class='btn btn-primary'> Rekomendasi</span></a>"; 
+					echo "<a href='rekomendasi.php?id=". $row['user_id'] ."' title='Rekomendasi' datatoggle='tooltip'><span class='btn btn-primary'> Rekomendasi</span></a>"; 
 
 
 												echo "&emsp;&emsp;&emsp;";
-												echo "<a href='transkrip.php?id=". $row['user_id'] ."' title='transkrip' datatoggle='tooltip'><span class='btn btn-primary'> Transkrip</span></a>"; 
+					echo "<a href='transkrip.php?id=". $row['user_id'] ."' title='transkrip' datatoggle='tooltip'><span class='btn btn-primary'> Transkrip</span></a>"; 
 
 
 												echo "&emsp;&emsp;&emsp;";
-												echo "<a href='pernyataan.php?id=". $row['user_id'] ."' title='pernyataan' datatoggle='tooltip'><span class='btn btn-primary'> Surat Pernyataan Orang Tua</span></a>";  
+					echo "<a href='pernyataan.php?id=". $row['user_id'] ."' title='pernyataan' datatoggle='tooltip'><span class='btn btn-primary'> Surat Pernyataan Orang Tua</span></a>";  
 												echo "</td>";
 
 												echo "<td>";  
-												echo "<a href='terima.php?id=". $row['user_id'] ."' title='Terima' datatoggle='tooltip'><span class='btn btn-success'> Terima</span></a>"; 
+					echo "<a href='terima.php?id=". $row['user_id'] ."' title='Terima' datatoggle='tooltip'><span class='btn btn-success'> Terima</span></a>"; 
 
 												echo "&emsp;";
 
-												echo "<a href='tolak.php?id=". $row['user_id'] ."' title='Tolak' datatoggle='tooltip'><span class='btn btn-danger'> Tolak</span></a>"; 
+					echo "<a href='tolak.php?id=". $row['user_id'] ."' title='Tolak' datatoggle='tooltip'><span class='btn btn-danger'> Tolak</span></a>"; 
 												echo "</td>"; 
 												echo "</tr>"; 
 											} 

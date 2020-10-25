@@ -20,20 +20,5 @@ $sql = "SELECT * FROM data_mhs WHERE user_id = '".$id."'";
 $result = $link->query($sql);
 $row = $result->fetch_array();
 $rekomendasi = $row['rekomendasi_dosen'];
-
+header("location:../mahasiswa/assets/uploads/$id/$rekomendasi");
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-
-	<title>Rekomendasi</title>
-
-</head>
-
-<body>   
-
-	<embed type="application/pdf" src="../mahasiswa/assets/uploads/<?php echo"$id" ?>/<?php echo"$rekomendasi" ?>" width="1360" height="640"></embed>
-
-</body>
-</html>

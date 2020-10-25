@@ -21,19 +21,6 @@ $result = $link->query($sql);
 $row = $result->fetch_array();
 $pernyataan = $row['pernyataan_ortu'];
 
+header("location:../mahasiswa/assets/uploads/$id/$pernyataan");
+
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-
-	<title>Pernyataan Orang Tua</title>
-
-</head>
-
-<body>   
-
-	<embed type="application/pdf" src="../mahasiswa/assets/uploads/<?php echo"$id" ?>/<?php echo"$pernyataan" ?>" width="1360" height="640"></embed>
-
-</body>
-</html>
