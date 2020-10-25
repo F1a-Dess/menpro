@@ -6,7 +6,7 @@ session_start();
 $_SESSION["email"]=$_POST["email"];
 //echo $_SESSION["email"];
 
-$con=mysqli_connect("group05@localhost", "group05", "05osan", "group05") or die("cannot connect");
+$con=mysqli_connect("localhost", "group05@localhost", "05osan", "group05") or die("cannot connect");
 
 $email=mysqli_real_escape_string($con, $_POST['email']); 
 $password=md5(mysqli_real_escape_string($con, $_POST['password']));
