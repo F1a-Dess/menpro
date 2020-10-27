@@ -39,7 +39,7 @@ if($_SESSION['level']!="mahasiswa")
         $_FILES["bukti_bayar"]["tmp_name"], "{$folderUpload}" . $bukti_bayar);
 
     if ($uploadbukti_bayarSukses) {
-        $link = mysqli_connect("localhost","root","","transfer_mhs_intern");
+        $link = mysqli_connect("127.0.0.1","group05","05osan","group05");
         $sql = "UPDATE data_mhs SET bayar = 4, bukti_bayar = '$bukti_bayar' WHERE user_id = '".$id."'";
         if($result = $link->query($sql)){
           header("location: status.php");

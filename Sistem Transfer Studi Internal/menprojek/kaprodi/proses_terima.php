@@ -39,7 +39,7 @@ if($_SESSION['level']!="kaprodi")
         $_FILES["konversi_nilai"]["tmp_name"], "{$folderUpload}" . $konversi_nilai);
 
     if ($uploadkonversi_nilaiSukses) {
-        $link = mysqli_connect("localhost","root","","transfer_mhs_intern");
+        $link = mysqli_connect("127.0.0.1","group05","05osan","group05");
         $sql = "UPDATE data_mhs SET kep_kaprodi = 1, konversi = '$konversi_nilai' WHERE user_id = '".$id."'";
         if($result = $link->query($sql)){
           header("location: kaprodi.php");

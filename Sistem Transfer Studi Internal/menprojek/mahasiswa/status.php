@@ -11,7 +11,7 @@ if($_SESSION['level']!="mahasiswa")
 	header("location:login/accdenied.php");
 }
 
-$link = mysqli_connect("localhost","root","","transfer_mhs_intern");
+$link = mysqli_connect("127.0.0.1","group05","05osan","group05");
 $email = $_SESSION['email'];
 
 $sql2 = "SELECT * FROM user WHERE email = '".$email."'";
@@ -126,7 +126,7 @@ $keputusan = $row['keputusan'];
 								</td>
 								<td align = "center">
 									<?php 
-									$link = mysqli_connect("localhost","root","","transfer_mhs_intern");
+									$link = mysqli_connect("127.0.0.1","group05","05osan","group05");
 									$sql = "SELECT * FROM data_mhs WHERE user_id = '".$id."'";
 									$result = $link->query($sql);
 									$row = $result->fetch_array();
@@ -148,7 +148,7 @@ $keputusan = $row['keputusan'];
 								</td>
 								<td align = "center">
 									<?php 
-									$link = mysqli_connect("localhost","root","","transfer_mhs_intern");
+									$link = mysqli_connect("127.0.0.1","group05","05osan","group05");
 									$sql = "SELECT * FROM data_mhs WHERE user_id = '".$id."'";
 									$result = $link->query($sql);
 									$row = $result->fetch_array();
@@ -173,7 +173,7 @@ $keputusan = $row['keputusan'];
 								</td>
 								<td align = "center">
 									<?php 
-									$link = mysqli_connect("localhost","root","","transfer_mhs_intern");
+									$link = mysqli_connect("127.0.0.1","group05","05osan","group05");
 									$sql = "SELECT * FROM data_mhs WHERE user_id = '".$id."'";
 									$result = $link->query($sql);
 									$row = $result->fetch_array();
@@ -195,7 +195,7 @@ $keputusan = $row['keputusan'];
 								</td>
 								<td align = "center">
 									<?php 
-									$link = mysqli_connect("localhost","root","","transfer_mhs_intern");
+									$link = mysqli_connect("127.0.0.1","group05","05osan","group05");
 									$sql = "SELECT * FROM data_mhs WHERE user_id = '".$id."'";
 									$result = $link->query($sql);
 									$row = $result->fetch_array();
@@ -217,7 +217,7 @@ $keputusan = $row['keputusan'];
 								</td>
 								<td align = "center">
 									<?php 
-									$link = mysqli_connect("localhost","root","","transfer_mhs_intern");
+									$link = mysqli_connect("127.0.0.1","group05","05osan","group05");
 									$sql = "SELECT * FROM data_mhs WHERE user_id = '".$id."'";
 									$result = $link->query($sql);
 									$row = $result->fetch_array();
@@ -243,7 +243,7 @@ $keputusan = $row['keputusan'];
 								</td>
 								<td align = "center">
 									<?php 
-									$link = mysqli_connect("localhost","root","","transfer_mhs_intern");
+									$link = mysqli_connect("127.0.0.1","group05","05osan","group05");
 									$sql = "SELECT * FROM data_mhs WHERE user_id = '".$id."'";
 									$result = $link->query($sql);
 									$row = $result->fetch_array();
@@ -263,7 +263,7 @@ $keputusan = $row['keputusan'];
 								</td>
 								<td align = "center">
 									<?php 
-									$link = mysqli_connect("localhost","root","","transfer_mhs_intern");
+									$link = mysqli_connect("127.0.0.1","group05","05osan","group05");
 									$sql = "SELECT * FROM data_mhs WHERE user_id = '".$id."'";
 									$result = $link->query($sql);
 									$row = $result->fetch_array();
@@ -281,7 +281,7 @@ $keputusan = $row['keputusan'];
 						</tbody>
 					</table>
 					<?php 
-					$link = mysqli_connect("localhost","root","","transfer_mhs_intern");
+					$link = mysqli_connect("127.0.0.1","group05","05osan","group05");
 					$sql = "SELECT * FROM data_mhs WHERE user_id = '".$id."'";
 					$result = $link->query($sql);
 					$row = $result->fetch_array();

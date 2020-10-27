@@ -11,7 +11,7 @@ if($_SESSION['level']!="mahasiswa")
     header("location:login/accdenied.php");
 }
 
-$link = mysqli_connect("localhost","root","","transfer_mhs_intern");
+$link = mysqli_connect("127.0.0.1","group05","05osan","group05");
 $email = $_SESSION['email'];
 
 $sql3 = "SELECT * FROM user WHERE email = '".$email."'";
@@ -56,7 +56,7 @@ $uploadpernyataanSukses = move_uploaded_file(
     $_FILES["pernyataan"]["tmp_name"], "{$folderUpload}" . $pernyataan);
 
 if ($uploadtranskripSukses && $uploadrekomendasiSukses && $uploadpernyataanSukses) {
-    $link = mysqli_connect("localhost","root","","transfer_mhs_intern");
+    $link = mysqli_connect("127.0.0.1","group05","05osan","group05");
     $sql = "UPDATE data_mhs SET transkrip = '$transkrip', rekomendasi_dosen = '$rekomendasi', pernyataan_ortu = '$pernyataan', upload_berkas = '1' WHERE user_id = '".$id."'";
     if($result = $link->query($sql)){
       header("location: mahasiswa.php");

@@ -42,7 +42,7 @@ if($_SESSION['level']!="bak")
         $_FILES["biaya_studi"]["tmp_name"], "{$folderUpload}" . $biaya_studi);
 
     if ($uploadbiaya_studiSukses) {
-        $link = mysqli_connect("localhost","root","","transfer_mhs_intern");
+        $link = mysqli_connect("127.0.0.1","group05","05osan","group05");
         $sql = "UPDATE data_mhs SET update_rincian_biaya_studi = '$date', rincian_biaya_studi = '$biaya_studi' WHERE user_id = '".$id."'";
         if($result = $link->query($sql)){
           header("location: bak.php");

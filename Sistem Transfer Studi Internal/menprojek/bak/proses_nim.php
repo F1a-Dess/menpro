@@ -39,7 +39,7 @@ if($_SESSION['level']!="bak")
         $_FILES["kirim_nim"]["tmp_name"], "{$folderUpload}" . $kirim_nim);
 
     if ($uploadkirim_nimSukses) {
-        $link = mysqli_connect("localhost","root","","transfer_mhs_intern");
+        $link = mysqli_connect("127.0.0.1","group05","05osan","group05");
         $sql = "UPDATE data_mhs SET nim_baru = '$kirim_nim', selesai = 1, bayar = 2 WHERE user_id = '".$id."'";
         if($result = $link->query($sql)){
           header("location: bak_bayar.php");

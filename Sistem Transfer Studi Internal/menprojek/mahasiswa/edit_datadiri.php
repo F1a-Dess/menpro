@@ -11,7 +11,7 @@ session_start();
         header("location:../login/accdenied.php");
     } 
 
-    $link = mysqli_connect("localhost","root","","transfer_mhs_intern");
+    $link = mysqli_connect("127.0.0.1","group05","05osan","group05");
     $email = $_SESSION['email'];
 
     $sql3 = "SELECT * FROM user WHERE email = '".$email."'";
